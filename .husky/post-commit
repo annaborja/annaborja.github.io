@@ -1,11 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-if [ -e .commit ] then
+if [ -e .commit ]; then
   rm .commit
 
   npm run build
-  
+
   git add .
   git commit --no-verify -m "chore(release): build latest"
 fi
