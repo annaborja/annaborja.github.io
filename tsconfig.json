@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "baseUrl": "src",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
     "noImplicitAny": true,
     "sourceMap": true,
+    "strict": true,
     "target": "es6"
   }
 }

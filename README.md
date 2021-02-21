@@ -9,3 +9,4 @@
 - [PostCSS](https://postcss.org/)
   - [PostCSS Preset Env](https://preset-env.cssdb.org/)
   - [cssnano](https://cssnano.co/)
+- [TypeScript](https://www.typescriptlang.org/)

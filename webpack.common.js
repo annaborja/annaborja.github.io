@@ -5,7 +5,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    main: "./src/index.ts",
+    main: "./src/index.tsx",
   },
   module: {
     rules: [
@@ -37,7 +37,11 @@ module.exports = {
       {
         exclude: /node_modules/,
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: [
+          {
+            loader: "ts-loader",
+          },
+        ],
       },
     ],
   },
@@ -59,6 +63,9 @@ module.exports = {
     }),
   ],
   resolve: {
+    alias: {
+      components: path.resolve(__dirname, "src/components/"),
+    },
     extensions: [".tsx", ".ts", ".js"],
   },
 };
