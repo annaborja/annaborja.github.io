@@ -5,7 +5,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    main: "./src/index.js",
+    main: "./src/index.ts",
   },
   module: {
     rules: [
@@ -33,6 +33,12 @@ module.exports = {
           "postcss-loader",
         ],
       },
+      // TypeScript
+      {
+        exclude: /node_modules/,
+        test: /\.tsx?$/,
+        use: "ts-loader",
+      },
     ],
   },
   output: {
@@ -52,4 +58,7 @@ module.exports = {
       title: "Anna Borja",
     }),
   ],
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
 };
