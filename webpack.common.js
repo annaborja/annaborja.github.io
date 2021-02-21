@@ -1,4 +1,5 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
@@ -41,6 +42,10 @@ module.exports = {
   plugins: [
     // Automatically clean build output directory.
     new CleanWebpackPlugin(),
+    // Copy certain files or directories to the build output directory.
+    new CopyPlugin({
+      patterns: ["CNAME"],
+    }),
     // Autogenerate index.html file.
     new HtmlWebpackPlugin({
       favicon: "./src/assets/favicon.ico",
