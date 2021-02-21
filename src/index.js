@@ -5,7 +5,7 @@ import "./style.css";
 function component() {
   const element = document.createElement("div");
 
-  element.innerHTML = "Hello, world!";
+  element.innerHTML = "Hello again, world!";
 
   return element;
 }
