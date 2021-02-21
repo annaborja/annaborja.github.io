@@ -1,0 +1,38 @@
+{
+  "name": "annaborja.github.io",
+  "description": "Notes on life",
+  "version": "0.0.1",
+  "author": "Anna Borja",
+  "bugs": {
+    "url": "https://github.com/annaborja/annaborja.github.io/issues"
+  },
+  "homepage": "https://github.com/annaborja/annaborja.github.io",
+  "license": "ISC",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/annaborja/annaborja.github.io.git"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack serve --config webpack.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "caribou-ui": "~0.0.1"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "~3.0.0",
+    "css-loader": "~5.0.2",
+    "cssnano": "~4.1.10",
+    "html-webpack-plugin": "~5.0.0",
+    "postcss": "~8.2.5",
+    "postcss-loader": "~5.0.0",
+    "postcss-preset-env": "~6.7.0",
+    "style-loader": "~2.0.0",
+    "webpack": "~5.20.1",
+    "webpack-cli": "~4.5.0",
+    "webpack-dev-server": "~3.11.2",
+    "webpack-merge": "~5.7.3"
+  }
+}
