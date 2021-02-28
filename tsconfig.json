@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "jsx": "react-jsxdev",
     "moduleResolution": "node",
-    "noImplicitAny": true,
-    "sourceMap": true,
+    "noEmit": true,
     "strict": true,
     "target": "es6"
-  }
+  },
+  "include": ["src/**/*"]
 }

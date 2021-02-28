@@ -1,5 +1,5 @@
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
@@ -44,21 +44,27 @@ module.exports = {
     ],
   },
   output: {
+    clean: true,
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "docs"),
   },
   plugins: [
-    // Automatically clean build output directory.
-    new CleanWebpackPlugin(),
-    // Copy certain files or directories to the build output directory.
     new CopyPlugin({
       patterns: ["CNAME"],
     }),
-    // Autogenerate index.html file.
     new HtmlWebpackPlugin({
       favicon: "./src/assets/favicon.ico",
       template: "./src/index.html",
       title: "Anna Borja",
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+        mode: "write-references",
+      },
     }),
   ],
   resolve: {
