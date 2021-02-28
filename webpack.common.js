@@ -37,11 +37,9 @@ module.exports = {
       {
         exclude: /node_modules/,
         test: /\.tsx?$/,
-        use: [
-          {
-            loader: "ts-loader",
-          },
-        ],
+        use: {
+          loader: "babel-loader",
+        },
       },
     ],
   },
@@ -59,6 +57,7 @@ module.exports = {
     // Autogenerate index.html file.
     new HtmlWebpackPlugin({
       favicon: "./src/assets/favicon.ico",
+      template: "./src/index.html",
       title: "Anna Borja",
     }),
   ],
