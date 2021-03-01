@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "auiworks.amvim",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "jasonnutter.search-node-modules",
+    "sleistner.vscode-fileutils"
+  ]
+}

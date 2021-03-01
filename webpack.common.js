@@ -55,9 +55,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       favicon: "./src/assets/favicon.ico",
       template: "./src/index.html",
-      title: "Anna Borja",
     }),
     new ForkTsCheckerWebpackPlugin({
+      eslint: {
+        files: "./src/**/*.{ts,tsx,js,jsx}",
+      },
       typescript: {
         diagnosticOptions: {
           semantic: true,
