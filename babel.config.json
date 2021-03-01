@@ -1,7 +1,14 @@
 {
+  "plugins": ["@emotion"],
   "presets": [
     ["@babel/preset-env", { "targets": "defaults" }],
-    ["@babel/preset-react", { "runtime": "automatic" }],
+    [
+      "@babel/preset-react",
+      {
+        "importSource": "@emotion/react",
+        "runtime": "automatic"
+      }
+    ],
     "@babel/preset-typescript"
   ]
 }

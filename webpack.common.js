@@ -19,20 +19,6 @@ module.exports = {
         test: /\.(gif|jpeg|jpg|png|svg)$/i,
         type: "asset/resource",
       },
-      {
-        // Styles
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 1,
-            },
-          },
-          "postcss-loader",
-        ],
-      },
       // TypeScript
       {
         exclude: /node_modules/,
@@ -58,7 +44,7 @@ module.exports = {
     }),
     new ForkTsCheckerWebpackPlugin({
       eslint: {
-        files: "./src/**/*.{ts,tsx,js,jsx}",
+        files: "./src/**/*.{js,ts,tsx}",
       },
       typescript: {
         diagnosticOptions: {
@@ -71,6 +57,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
+      assets: path.resolve(__dirname, "src/assets/"),
       components: path.resolve(__dirname, "src/components/"),
     },
     extensions: [".tsx", ".ts", ".js"],

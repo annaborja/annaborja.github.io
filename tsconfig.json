@@ -3,6 +3,7 @@
     "baseUrl": "src",
     "isolatedModules": true,
     "jsx": "react-jsxdev",
+    "jsxImportSource": "@emotion/react",
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
