@@ -12,10 +12,6 @@ export const GlobalNav: FunctionComponent = () => {
             Home
           </NavLink>
         </li>
-
-        <li>
-          <NavLink to={AppRoute.CALISTHENICS}>Calisthenics</NavLink>
-        </li>
       </ul>
     </nav>
   );

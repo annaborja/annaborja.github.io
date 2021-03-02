@@ -1,4 +1,6 @@
 export const AppRoute = {
-  CALISTHENICS: "/calisthenics",
+  CREATIVE: "/creative",
+  CULTURAL: "/cultural",
   HOME: "/",
+  PHYSICAL: "/physical",
 } as const;
