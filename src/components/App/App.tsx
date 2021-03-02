@@ -1,12 +1,15 @@
 import { Global, css } from "@emotion/react";
 import { FunctionComponent } from "react";
+import { BrowserRouter } from "react-router-dom";
 
-import openSansBold from "assets/fonts/OpenSans-Bold.ttf";
-import openSansRegular from "assets/fonts/OpenSans-Regular.ttf";
+import { GlobalNav, Routes } from "./components";
+
+import openSansBold from "@assets/fonts/OpenSans-Bold.ttf";
+import openSansRegular from "@assets/fonts/OpenSans-Regular.ttf";
 
 export const App: FunctionComponent = () => {
   return (
-    <>
+    <BrowserRouter>
       <Global
         styles={css`
           @font-face {
@@ -29,7 +32,9 @@ export const App: FunctionComponent = () => {
         `}
       />
 
-      <p>Hello, world!</p>
-    </>
+      <GlobalNav />
+
+      <Routes />
+    </BrowserRouter>
   );
 };

@@ -6,6 +6,12 @@
     "jsxImportSource": "@emotion/react",
     "moduleResolution": "node",
     "noEmit": true,
+    "paths": {
+      "@assets": ["assets"],
+      "@components": ["components"],
+      "@constants": ["constants"],
+      "@pages": ["pages"]
+    },
     "strict": true,
     "target": "es6"
   },
