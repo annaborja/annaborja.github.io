@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "jasonnutter.search-node-modules",
-    "sleistner.vscode-fileutils"
+    "sleistner.vscode-fileutils",
+    "yzhang.markdown-all-in-one"
   ]
 }
