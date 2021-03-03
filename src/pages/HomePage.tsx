@@ -5,23 +5,36 @@ import { AppRoute } from "@constants";
 
 export const HomePage: FunctionComponent = () => {
   return (
-    <>
+    <main>
       <header>
         <h1>AnnaBorja.com</h1>
         <h2>Notes on Life</h2>
       </header>
 
-      <h1>
-        <Link to={AppRoute.PHYSICAL}>The Physical</Link>
-      </h1>
+      <section>
+        <h1>The Physical</h1>
 
-      <h1>
-        <Link to={AppRoute.CREATIVE}>The Creative</Link>
-      </h1>
+        <ul>
+          <li>
+            <Link to={AppRoute.CALISTHENICS}>Calisthenics</Link>
+          </li>
+          <li>
+            <Link to={AppRoute.MARTIAL_ARTS}>Martial Arts</Link>
+          </li>
+        </ul>
+      </section>
 
-      <h1>
-        <Link to={AppRoute.CULTURAL}>The Cultural</Link>
-      </h1>
-    </>
+      <section>
+        <h1>The Creative</h1>
+
+        <ul></ul>
+      </section>
+
+      <section>
+        <h1>The Cultural</h1>
+
+        <ul></ul>
+      </section>
+    </main>
   );
 };

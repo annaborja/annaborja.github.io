@@ -3,31 +3,28 @@ import { Route, Switch } from "react-router-dom";
 
 import { AppRoute } from "@constants";
 import {
-  CreativePage,
-  CulturalPage,
+  CalisthenicsPage,
   HomePage,
+  MartialArtsPage,
   NotFoundPage,
-  PhysicalPage,
 } from "@pages";
+
+const ROUTE_MAP: Readonly<
+  Record<typeof AppRoute[keyof typeof AppRoute], FunctionComponent>
+> = Object.freeze({
+  [AppRoute.HOME]: HomePage,
+  [AppRoute.CALISTHENICS]: CalisthenicsPage,
+  [AppRoute.MARTIAL_ARTS]: MartialArtsPage,
+});
 
 export const Routes: FunctionComponent = () => {
   return (
     <Switch>
-      <Route exact path={AppRoute.CREATIVE}>
-        <CreativePage />
-      </Route>
-
-      <Route exact path={AppRoute.CULTURAL}>
-        <CulturalPage />
-      </Route>
-
-      <Route exact path={AppRoute.PHYSICAL}>
-        <PhysicalPage />
-      </Route>
-
-      <Route exact path={AppRoute.HOME}>
-        <HomePage />
-      </Route>
+      {Object.entries(ROUTE_MAP).map(([path, PageComponent]) => (
+        <Route exact key={path} path={path}>
+          <PageComponent />
+        </Route>
+      ))}
 
       <Route path="*">
         <NotFoundPage />

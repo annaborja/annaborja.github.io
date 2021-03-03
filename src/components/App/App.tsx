@@ -2,10 +2,9 @@ import { Global, css } from "@emotion/react";
 import { FunctionComponent } from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import { GlobalNav, Routes } from "./components";
-
 import openSansBold from "@assets/fonts/OpenSans-Bold.ttf";
 import openSansRegular from "@assets/fonts/OpenSans-Regular.ttf";
+import { GlobalNav, Routes } from "./components";
 
 export const App: FunctionComponent = () => {
   return (
