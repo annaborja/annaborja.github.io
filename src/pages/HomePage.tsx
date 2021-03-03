@@ -19,6 +19,9 @@ export const HomePage: FunctionComponent = () => {
             <Link to={AppRoute.CALISTHENICS}>Calisthenics</Link>
           </li>
           <li>
+            <Link to={AppRoute.WEIGHTLIFTING}>Weightlifting</Link>
+          </li>
+          <li>
             <Link to={AppRoute.MARTIAL_ARTS}>Martial Arts</Link>
           </li>
         </ul>
@@ -27,13 +30,21 @@ export const HomePage: FunctionComponent = () => {
       <section>
         <h1>The Creative</h1>
 
-        <ul></ul>
+        <ul>
+          <li>
+            <Link to={AppRoute.DRAWING}>Drawing</Link>
+          </li>
+        </ul>
       </section>
 
       <section>
         <h1>The Cultural</h1>
 
-        <ul></ul>
+        <ul>
+          <li>
+            <Link to={AppRoute.MOVIES}>Movies</Link>
+          </li>
+        </ul>
       </section>
     </main>
   );

@@ -4,17 +4,29 @@ import { Route, Switch } from "react-router-dom";
 import { AppRoute } from "@constants";
 import {
   CalisthenicsPage,
+  DrawingPage,
   HomePage,
   MartialArtsPage,
+  MoviesPage,
   NotFoundPage,
+  WeightliftingPage,
 } from "@pages";
 
 const ROUTE_MAP: Readonly<
   Record<typeof AppRoute[keyof typeof AppRoute], FunctionComponent>
 > = Object.freeze({
   [AppRoute.HOME]: HomePage,
+
+  // Creative
+  [AppRoute.DRAWING]: DrawingPage,
+
+  // Cultural
+  [AppRoute.MOVIES]: MoviesPage,
+
+  // Physical
   [AppRoute.CALISTHENICS]: CalisthenicsPage,
   [AppRoute.MARTIAL_ARTS]: MartialArtsPage,
+  [AppRoute.WEIGHTLIFTING]: WeightliftingPage,
 });
 
 export const Routes: FunctionComponent = () => {
