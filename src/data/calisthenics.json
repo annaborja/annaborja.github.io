@@ -10,11 +10,10 @@
       "articles": []
     },
     {
-      "title": "Journeys",
+      "title": "Progress",
       "articles": [
         {
-          "title": "The Path to the Pike",
-          "paragraphs": ["Foo", "Bar", "Baz"]
+          "title": "The Path to the Pike"
         }
       ]
     }

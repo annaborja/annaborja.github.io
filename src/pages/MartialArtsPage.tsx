@@ -1,30 +1,8 @@
 import { FunctionComponent } from "react";
-import * as ReactMarkdown from "react-markdown";
 
+import { Page } from "@components";
 import { MartialArtsData } from "@data";
 
-const { sections, title } = MartialArtsData;
-
 export const MartialArtsPage: FunctionComponent = () => {
-  return (
-    <main>
-      <h1>{title}</h1>
-
-      {sections.map(({ articles, title }) => (
-        <section key={title}>
-          <h1>{title}</h1>
-
-          {articles.map(({ paragraphs, title }) => (
-            <article key={title}>
-              <h1>{title}</h1>
-
-              {paragraphs.map((paragraph, idx) => (
-                <ReactMarkdown key={idx}>{paragraph}</ReactMarkdown>
-              ))}
-            </article>
-          ))}
-        </section>
-      ))}
-    </main>
-  );
+  return <Page data={MartialArtsData} />;
 };

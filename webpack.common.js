@@ -33,6 +33,7 @@ module.exports = {
     clean: true,
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "docs"),
+    publicPath: "/",
   },
   plugins: [
     new CopyPlugin({
