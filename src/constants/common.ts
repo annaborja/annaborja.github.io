@@ -13,6 +13,7 @@ export const AppRoute = {
 
   // Cultural
   MOVIES: `${AppRoutePrefix.CULTURAL}/movies`,
+  PODCASTS: `${AppRoutePrefix.CULTURAL}/podcasts`,
 
   // Physical
   CALISTHENICS: `${AppRoutePrefix.PHYSICAL}/calisthenics`,

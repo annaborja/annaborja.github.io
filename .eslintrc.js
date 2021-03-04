@@ -25,6 +25,7 @@ module.exports = {
   reportUnusedDisableDirectives: true,
   root: true,
   rules: {
+    "@typescript-eslint/no-unsafe-assignment": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
   },

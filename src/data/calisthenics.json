@@ -1,0 +1,22 @@
+{
+  "title": "Calisthenics",
+  "sections": [
+    {
+      "title": "Mobility",
+      "articles": []
+    },
+    {
+      "title": "Strength",
+      "articles": []
+    },
+    {
+      "title": "Journeys",
+      "articles": [
+        {
+          "title": "The Path to the Pike",
+          "paragraphs": ["Foo", "Bar", "Baz"]
+        }
+      ]
+    }
+  ]
+}

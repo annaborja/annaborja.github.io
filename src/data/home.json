@@ -1,0 +1,45 @@
+{
+  "title": "AnnaBorja.com",
+  "subtitle": "Notes on Life",
+  "sections": [
+    {
+      "title": "The Physical",
+      "links": [
+        {
+          "routeKey": "CALISTHENICS",
+          "text": "Calisthenics"
+        },
+        {
+          "routeKey": "WEIGHTLIFTING",
+          "text": "Weightlifting"
+        },
+        {
+          "routeKey": "MARTIAL_ARTS",
+          "text": "Martial Arts"
+        }
+      ]
+    },
+    {
+      "title": "The Creative",
+      "links": [
+        {
+          "routeKey": "DRAWING",
+          "text": "Drawing"
+        }
+      ]
+    },
+    {
+      "title": "The Cultural",
+      "links": [
+        {
+          "routeKey": "MOVIES",
+          "text": "Movies"
+        },
+        {
+          "routeKey": "PODCASTS",
+          "text": "Podcasts"
+        }
+      ]
+    }
+  ]
+}

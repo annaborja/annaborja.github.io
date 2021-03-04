@@ -9,6 +9,7 @@ import {
   MartialArtsPage,
   MoviesPage,
   NotFoundPage,
+  PodcastsPage,
   WeightliftingPage,
 } from "@pages";
 
@@ -22,6 +23,7 @@ const ROUTE_MAP: Readonly<
 
   // Cultural
   [AppRoute.MOVIES]: MoviesPage,
+  [AppRoute.PODCASTS]: PodcastsPage,
 
   // Physical
   [AppRoute.CALISTHENICS]: CalisthenicsPage,

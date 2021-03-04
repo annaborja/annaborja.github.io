@@ -2,50 +2,33 @@ import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
 import { AppRoute } from "@constants";
+import { HomeData } from "@data";
+
+const { sections, subtitle, title } = HomeData;
 
 export const HomePage: FunctionComponent = () => {
   return (
     <main>
       <header>
-        <h1>AnnaBorja.com</h1>
-        <h2>Notes on Life</h2>
+        <h1>{title}</h1>
+        <h2>{subtitle}</h2>
       </header>
 
-      <section>
-        <h1>The Physical</h1>
+      {sections.map(({ links, title }) => (
+        <section key={title}>
+          <h1>{title}</h1>
 
-        <ul>
-          <li>
-            <Link to={AppRoute.CALISTHENICS}>Calisthenics</Link>
-          </li>
-          <li>
-            <Link to={AppRoute.WEIGHTLIFTING}>Weightlifting</Link>
-          </li>
-          <li>
-            <Link to={AppRoute.MARTIAL_ARTS}>Martial Arts</Link>
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h1>The Creative</h1>
-
-        <ul>
-          <li>
-            <Link to={AppRoute.DRAWING}>Drawing</Link>
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h1>The Cultural</h1>
-
-        <ul>
-          <li>
-            <Link to={AppRoute.MOVIES}>Movies</Link>
-          </li>
-        </ul>
-      </section>
+          <ul>
+            {links.map(({ routeKey, text }) => (
+              <li key={routeKey}>
+                <Link to={AppRoute[routeKey as keyof typeof AppRoute]}>
+                  {text}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </main>
   );
 };

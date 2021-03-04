@@ -4,4 +4,5 @@ export * from "./HomePage";
 export * from "./MartialArtsPage";
 export * from "./MoviesPage";
 export * from "./NotFoundPage";
+export * from "./PodcastsPage";
 export * from "./WeightliftingPage";

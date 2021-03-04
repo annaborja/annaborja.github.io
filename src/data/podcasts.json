@@ -1,0 +1,14 @@
+{
+  "title": "Podcasts",
+  "sections": [
+    {
+      "title": "Journeys",
+      "articles": [
+        {
+          "title": "The Path to the Pike",
+          "paragraphs": ["Foo", "Bar", "Baz"]
+        }
+      ]
+    }
+  ]
+}
