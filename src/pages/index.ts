@@ -1,3 +1,4 @@
+export * from "./BooksPage";
 export * from "./CalisthenicsPage";
 export * from "./DrawingPage";
 export * from "./HomePage";
@@ -5,4 +6,5 @@ export * from "./MartialArtsPage";
 export * from "./MoviesPage";
 export * from "./NotFoundPage";
 export * from "./PodcastsPage";
+export * from "./TVPage";
 export * from "./WeightliftingPage";

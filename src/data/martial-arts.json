@@ -1,4 +1,20 @@
 {
   "title": "Martial Arts",
-  "sections": []
+  "sections": [
+    {
+      "title": "Weapons",
+      "articles": [
+        {
+          "title": "Longsword Fundamentals",
+          "ytPlaylistId": "PL6fMGaGLNZwN6h_Izc2IKoyMT-1HABCvV",
+          "paragraphs": ["  - Grip\n  - Footwork"]
+        },
+        {
+          "title": "Longsword Guards",
+          "ytPlaylistId": "PL6fMGaGLNZwO8TS2iT1xrvFOv76bieaG0",
+          "paragraphs": ["  - **Tutta Porta di Ferro** (Whole Iron Door)"]
+        }
+      ]
+    }
+  ]
 }

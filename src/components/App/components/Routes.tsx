@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import { AppRoute } from "@constants";
 import {
+  BooksPage,
   CalisthenicsPage,
   DrawingPage,
   HomePage,
@@ -10,6 +11,7 @@ import {
   MoviesPage,
   NotFoundPage,
   PodcastsPage,
+  TVPage,
   WeightliftingPage,
 } from "@pages";
 
@@ -22,8 +24,10 @@ const ROUTE_MAP: Readonly<
   [AppRoute.DRAWING]: DrawingPage,
 
   // Cultural
+  [AppRoute.BOOKS]: BooksPage,
   [AppRoute.MOVIES]: MoviesPage,
   [AppRoute.PODCASTS]: PodcastsPage,
+  [AppRoute.TV]: TVPage,
 
   // Physical
   [AppRoute.CALISTHENICS]: CalisthenicsPage,

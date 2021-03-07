@@ -4,11 +4,13 @@ import * as ReactMarkdown from "react-markdown";
 interface Article {
   paragraphs?: string[];
   title: string;
+  ytPlaylistId?: string;
 }
 
 interface Section {
   articles?: Article[];
   title: string;
+  ytPlaylistId?: string;
 }
 
 interface Data {
@@ -24,13 +26,35 @@ export const Page: FunctionComponent<{ data: Data }> = ({
     <main>
       <h1>{title}</h1>
 
-      {sections?.map(({ articles, title }) => (
+      {sections?.map(({ articles, title, ytPlaylistId }) => (
         <section key={title}>
           <h1>{title}</h1>
 
-          {articles?.map(({ paragraphs, title }) => (
+          {ytPlaylistId && (
+            <iframe
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              frameBorder="0"
+              height="210"
+              src={`https://www.youtube.com/embed/videoseries?list=${ytPlaylistId}`}
+              width="373"
+            ></iframe>
+          )}
+
+          {articles?.map(({ paragraphs, title, ytPlaylistId }) => (
             <article key={title}>
               <h1>{title}</h1>
+
+              {ytPlaylistId && (
+                <iframe
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  frameBorder="0"
+                  height="210"
+                  src={`https://www.youtube.com/embed/videoseries?list=${ytPlaylistId}`}
+                  width="373"
+                ></iframe>
+              )}
 
               {paragraphs?.map((paragraph, idx) => (
                 <ReactMarkdown key={idx} source={paragraph} />

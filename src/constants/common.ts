@@ -12,8 +12,10 @@ export const AppRoute = {
   DRAWING: `${AppRoutePrefix.CREATIVE}/drawing`,
 
   // Cultural
+  BOOKS: `${AppRoutePrefix.CULTURAL}/books`,
   MOVIES: `${AppRoutePrefix.CULTURAL}/movies`,
   PODCASTS: `${AppRoutePrefix.CULTURAL}/podcasts`,
+  TV: `${AppRoutePrefix.CULTURAL}/tv`,
 
   // Physical
   CALISTHENICS: `${AppRoutePrefix.PHYSICAL}/calisthenics`,

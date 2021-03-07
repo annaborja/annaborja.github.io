@@ -32,12 +32,20 @@
       "title": "The Cultural",
       "links": [
         {
-          "routeKey": "MOVIES",
-          "text": "Movies"
+          "routeKey": "BOOKS",
+          "text": "Books"
         },
         {
           "routeKey": "PODCASTS",
           "text": "Podcasts"
+        },
+        {
+          "routeKey": "MOVIES",
+          "text": "Movies"
+        },
+        {
+          "routeKey": "TV",
+          "text": "TV Series"
         }
       ]
     }
