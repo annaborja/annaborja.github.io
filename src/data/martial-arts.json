@@ -1,18 +1,42 @@
 {
   "title": "Martial Arts",
+  "paragraphs": [
+    {
+      "text": "I’ve been enamored with martial arts ever since I watched _Dragonball Z_ as a kid. I didn’t start training with any level of seriousness until my twenties, and my consistency in training has been sporadic since then, but I still have hopes of achieving some level of skill someday if I keep at it."
+    }
+  ],
   "sections": [
     {
       "title": "Weapons",
       "articles": [
         {
           "title": "Longsword Fundamentals",
-          "ytPlaylistId": "PL6fMGaGLNZwN6h_Izc2IKoyMT-1HABCvV",
-          "paragraphs": ["  - Grip\n  - Footwork"]
+          "paragraphs": [
+            {
+              "text": "...",
+              "ytPlaylistId": "PL6fMGaGLNZwN6h_Izc2IKoyMT-1HABCvV"
+            },
+            {
+              "text": "* ..."
+            }
+          ]
         },
         {
           "title": "Longsword Guards",
-          "ytPlaylistId": "PL6fMGaGLNZwO8TS2iT1xrvFOv76bieaG0",
-          "paragraphs": ["  - **Tutta Porta di Ferro** (Whole Iron Door)"]
+          "paragraphs": [
+            {
+              "text": "[Swordschool](https://swordschool.com/wiki/index.php/The_12_guards)",
+              "ytPlaylistId": "PL6fMGaGLNZwO8TS2iT1xrvFOv76bieaG0"
+            },
+            {
+              "title": "Tutta Porta di Ferro (Whole Iron Door)",
+              "text": "..."
+            },
+            {
+              "title": "Posta di Donna (Woman’s Guard)",
+              "text": "..."
+            }
+          ]
         }
       ]
     }

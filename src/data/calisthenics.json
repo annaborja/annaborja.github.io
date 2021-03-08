@@ -1,33 +1,56 @@
 {
   "title": "Calisthenics",
+  "paragraphs": [
+    {
+      "text": "Bodyweight fitness very much aligns with the spirit of minimalism that I aspire to embody in my life. I want to be strong and skillful in moving my body. To keep things simple, I bucket skills and attributes I want to work on into two categories: **mobility** and **strength**."
+    }
+  ],
   "sections": [
     {
+      "title": "Principles",
+      "paragraphs": [
+        {
+          "text": "These are fitness principles I’ve found enlightening when considering how to structure my exercise regimen. My favorite sources for free, high-quality fitness information are the [Tom Merrick](https://www.youtube.com/channel/UCU0DZhN-8KFLYO6beSaYljg) and [Redefining Strength](https://www.youtube.com/channel/UCh2w-xqEwSz96sbn2afbOVQ) channels on YouTube. I’ve also gotten a lot out of the paid programs offered by [GMB Fitness](https://gmb.io/).",
+          "ytPlaylistId": "PL6fMGaGLNZwOd0fQsFbSjsEldxSSfTImM"
+        },
+        {
+          "text": "* ..."
+        }
+      ]
+    },
+    {
       "title": "Mobility",
-      "articles": []
+      "paragraphs": [
+        {
+          "text": "These are the routines and exercises I base my mobility work on. The foundation of my regimen is a full-body mobility flow, with the following being my current routines when focusing on a particular part of the lower or upper body:",
+          "ytPlaylistId": "PL6fMGaGLNZwM9i4ntRRAQ6WD2k7JR1ldV"
+        },
+        {
+          "title": "...",
+          "text": "* ..."
+        }
+      ]
     },
     {
       "title": "Strength",
-      "articles": []
+      "articles": [
+        {
+          "title": "Lower Body",
+          "paragraphs": [
+            {
+              "text": "These are the routines and exercises I base my lower body strength workouts on. My current amalgamated routine is:",
+              "ytPlaylistId": "PL6fMGaGLNZwMNWS8RRWimHfhcKuNKQawv"
+            },
+            {
+              "text": "* ..."
+            }
+          ]
+        }
+      ]
     },
     {
       "title": "Progress",
-      "articles": [
-        {
-          "title": "Pike"
-        },
-        {
-          "title": "Shrimp Squat"
-        },
-        {
-          "title": "L-Sit"
-        },
-        {
-          "title": "Chin-Up"
-        },
-        {
-          "title": "Inverted Shoulder Press"
-        }
-      ]
+      "paragraphs": []
     }
   ]
 }

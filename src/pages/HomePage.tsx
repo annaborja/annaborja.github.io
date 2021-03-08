@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { AppRoute } from "@constants";
@@ -7,6 +7,10 @@ import { HomeData } from "@data";
 const { sections, subtitle, title } = HomeData;
 
 export const HomePage: FunctionComponent = () => {
+  useEffect(() => {
+    document.title = "Anna Borja";
+  }, []);
+
   return (
     <main>
       <header>
