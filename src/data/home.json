@@ -7,15 +7,15 @@
       "links": [
         {
           "routeKey": "CALISTHENICS",
-          "text": "Calisthenics"
+          "text": "_"
         },
         {
           "routeKey": "WEIGHTLIFTING",
-          "text": "Weightlifting"
+          "text": "_"
         },
         {
           "routeKey": "MARTIAL_ARTS",
-          "text": "Martial Arts"
+          "text": "_"
         }
       ]
     },
