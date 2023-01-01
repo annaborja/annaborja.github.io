@@ -1,0 +1,39 @@
+body {
+  color: var(--color-neutral-9);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-2);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-serif);
+}
+
+h1 {
+  font-size: var(--font-size-8);
+}
+
+h2 {
+  font-size: var(--font-size-7);
+}
+
+h3 {
+  font-size: var(--font-size-6);
+}
+
+h4 {
+  font-size: var(--font-size-5);
+}
+
+h5 {
+  font-size: var(--font-size-4);
+}
+
+h6 {
+  font-size: var(--font-size-3);
+}
