@@ -9,6 +9,8 @@ export interface Props {
 
 const { title } = Astro.props;
 const baseTitle = "Anna Borja | Narrative Designer";
+const homePath = "/";
+const pathname = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -26,10 +28,27 @@ const baseTitle = "Anna Borja | Narrative Designer";
   <body class="theme-light">
     <div class="app-shell">
       <header class="app-header">
-        <a class="app-nav-link app-nav-link-home" href="/">Home</a>
-        <a class="app-nav-link" href="/projects">Projects</a>
-        <a class="app-nav-link" href="/blog">Blog</a>
-        <a class="app-nav-link" href="/about">About</a>
+        {
+          [
+            { label: "Home", path: "/" },
+            { label: "Projects", path: "/projects" },
+            { label: "Skills", path: "/skills" },
+            { label: "Blog", path: "/blog" },
+          ].map(({ label, path }) => (
+            <a
+              class:list={[
+                "app-nav-link",
+                {
+                  "app-nav-link-active": pathname === path,
+                  "app-nav-link-home": path === homePath,
+                },
+              ]}
+              href={path}
+            >
+              {label}
+            </a>
+          ))
+        }
       </header>
 
       <main class="app-content">
@@ -70,24 +89,27 @@ const baseTitle = "Anna Borja | Narrative Designer";
   }
 
   .app-nav-link {
+    border-bottom-color: transparent;
+    border-bottom-style: solid;
+    border-bottom-width: var(--border-width-2);
     color: inherit;
     font-family: var(--font-family-serif);
     font-size: var(--font-size-2);
-    text-decoration-color: transparent;
-    text-decoration-line: underline;
-    text-decoration-thickness: var(--border-width-2);
-    text-underline-offset: var(--spacing-1);
-    transition: text-decoration-color var(--transition-duration-1);
+    padding-bottom: 1px;
+    text-decoration: none;
+    transition: border-bottom-color var(--transition-duration-2);
   }
 
-  .app-nav-link:hover {
-    text-decoration-color: var(--color-primary-1-3);
+  .app-nav-link:hover,
+  .app-nav-link-active {
+    border-bottom-color: var(--color-primary-1-3);
   }
 
   .app-nav-link-home {
+    border-bottom-width: var(--border-width-3);
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-2);
-    text-decoration-thickness: var(--border-width-3);
+    padding-bottom: var(--spacing-0);
   }
 
   .app-shell {

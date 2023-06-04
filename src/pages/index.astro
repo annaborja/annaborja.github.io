@@ -9,4 +9,68 @@ import AppLayout from "../layouts/AppLayout.astro";
     subtitle="Narrative Designer"
     title="Anna Borja"
   />
+
+  <div class="content">
+    <div class="paragraphs-container section">
+      <p class="text">
+        Hello! My name’s Anna. I’m a video game narrative designer based in the
+        Bay Area, California. I’m passionate about making games that use
+        <span class="text-emphasis">compelling mechanics</span> to tell <span
+          class="text-emphasis">unexpected</span
+        > or <span class="text-emphasis">emotionally resonant stories</span>.
+      </p>
+    </div>
+  </div>
 </AppLayout>
+
+<style>
+  .paragraphs-container {
+    gap: var(--spacing-7);
+  }
+
+  .section {
+    padding-block: var(--spacing-7);
+    padding-inline: var(--spacing-4);
+  }
+
+  .text {
+    font-size: var(--font-size-4);
+    font-weight: var(--font-weight-0);
+    line-height: 1.6;
+  }
+
+  .text-emphasis {
+    border-bottom-color: var(--color-colorful-1);
+    border-bottom-style: solid;
+    border-bottom-width: var(--border-width-4);
+  }
+
+  .text-emphasis:nth-of-type(3n + 2) {
+    border-bottom-color: var(--color-colorful-2);
+  }
+
+  .text-emphasis:nth-of-type(3n + 3) {
+    border-bottom-color: var(--color-colorful-3);
+  }
+
+  .text-link {
+    font-weight: var(--font-weight-1);
+  }
+
+  @media (min-width: 768px) {
+    .content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section {
+      max-inline-size: var(--sizing-18);
+      padding-inline: var(--spacing-6);
+    }
+
+    .text {
+      font-size: var(--font-size-5);
+    }
+  }
+</style>

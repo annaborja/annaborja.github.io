@@ -37,3 +37,17 @@ h5 {
 h6 {
   font-size: var(--font-size-3);
 }
+
+.paragraphs-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-link {
+  color: var(--color-primary-1-5);
+  transition: text-decoration-color var(--transition-duration-1);
+}
+
+.text-link:hover {
+  text-decoration-color: transparent;
+}
