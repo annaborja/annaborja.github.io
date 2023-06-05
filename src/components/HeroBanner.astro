@@ -4,7 +4,6 @@ export interface Props {
   gradientColorDark?: string;
   gradientColorLight?: string;
   patternSrc?: string;
-  smallTitle?: string;
   subtitle?: string;
   title: string;
 }
@@ -14,16 +13,20 @@ const {
   gradientColorDark = "var(--color-primary-1-5)",
   gradientColorLight = "var(--color-primary-1-1)",
   patternSrc,
-  smallTitle,
   subtitle,
   title,
 } = Astro.props;
 ---
 
-<div class:list={["hero-banner", { "hero-banner-with-pattern": !!patternSrc }]}>
-  <h1 class:list={["hero-title", { "only-large": !!smallTitle }]}>{title}</h1>
-
-  {smallTitle && <h1 class="hero-title only-small">{smallTitle}</h1>}
+<div
+  class:list={[
+    "flexbox-vertical",
+    "hero-banner",
+    "with-responsive-padding-inline",
+    { "hero-banner-with-pattern": !!patternSrc },
+  ]}
+>
+  <h1 class="hero-title">{title}</h1>
 
   {subtitle && <h2 class="hero-subtitle">{subtitle}</h2>}
 </div>
@@ -39,11 +42,9 @@ const {
   .hero-banner {
     align-items: center;
     background-color: var(--backgroundColor);
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     min-block-size: var(--sizing-13);
-    padding: var(--spacing-4);
+    padding-block: var(--spacing-5);
   }
 
   .hero-banner-with-pattern {
@@ -63,8 +64,9 @@ const {
   .hero-subtitle {
     color: var(--color-neutral-2);
     font-family: var(--font-family-sans);
-    font-size: var(--font-size-5);
+    font-size: var(--font-size-6);
     font-weight: var(--font-weight-0);
+    margin-block-start: var(--spacing-1);
     text-align: center;
   }
 
@@ -76,31 +78,7 @@ const {
       var(--gradientColorLight) 80%
     );
     color: transparent;
-    font-size: var(--font-size-8);
+    font-size: var(--font-size-9);
     text-align: center;
-  }
-
-  .only-large {
-    display: none;
-  }
-
-  @media (min-width: 414px) {
-    .only-large {
-      display: initial;
-    }
-
-    .only-small {
-      display: none;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .hero-subtitle {
-      font-size: var(--font-size-6);
-    }
-
-    .hero-title {
-      font-size: var(--font-size-9);
-    }
   }
 </style>

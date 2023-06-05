@@ -8,8 +8,15 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
 const baseTitle = "Anna Borja | Narrative Designer";
 const homePath = "/";
+const links: { hasChildren?: boolean; label: string; path: string }[] = [
+  { label: "Home", path: "/" },
+  { label: "Projects", path: "/projects" },
+  { label: "Skills", path: "/skills" },
+  { hasChildren: true, label: "Blog", path: "/blog" },
+];
 const pathname = Astro.url.pathname;
 ---
 
@@ -26,15 +33,10 @@ const pathname = Astro.url.pathname;
   </head>
 
   <body class="theme-light">
-    <div class="app-shell">
-      <header class="app-header">
+    <div class="app-shell flexbox-vertical">
+      <header class="app-header with-responsive-padding-inline">
         {
-          [
-            { label: "Home", path: "/" },
-            { label: "Projects", path: "/projects" },
-            { label: "Skills", path: "/skills" },
-            { hasChildren: true, label: "Blog", path: "/blog" },
-          ].map((link) => (
+          links.map((link) => (
             <a
               class:list={[
                 "app-nav-link",
@@ -74,7 +76,7 @@ const pathname = Astro.url.pathname;
     background-color: var(--color-neutral-9);
     color: var(--color-neutral-2);
     margin-block-start: auto;
-    padding-block: var(--spacing-4);
+    padding-block: var(--spacing-5);
     padding-inline: var(--spacing-4);
     text-align: center;
   }
@@ -87,7 +89,6 @@ const pathname = Astro.url.pathname;
     gap: var(--spacing-6);
     min-block-size: var(--sizing-8);
     padding-block: var(--spacing-3);
-    padding-inline: var(--spacing-4);
   }
 
   .app-nav-link {
@@ -115,22 +116,10 @@ const pathname = Astro.url.pathname;
   }
 
   .app-shell {
-    display: flex;
-    flex-direction: column;
     height: 100%;
   }
 
   .copyright-statement {
     font-size: var(--font-size-1);
-  }
-
-  @media (min-width: 768px) {
-    .app-footer {
-      padding-block: var(--spacing-5);
-    }
-
-    .app-header {
-      padding-inline: var(--spacing-5);
-    }
   }
 </style>

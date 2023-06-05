@@ -10,20 +10,13 @@ import AppLayout from "./AppLayout.astro";
     title="Anna Borja"
   />
 
-  <div class="content">
+  <div class="content-container with-responsive-padding-inline">
     <slot />
   </div>
 </AppLayout>
 
 <style>
-  .content {
+  .content-container {
     padding-block: var(--spacing-5);
-    padding-inline: var(--spacing-4);
-  }
-
-  @media (min-width: 768px) {
-    .content {
-      padding-inline: var(--spacing-5);
-    }
   }
 </style>

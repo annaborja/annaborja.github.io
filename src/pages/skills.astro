@@ -11,4 +11,47 @@ const title = "Skills";
     subtitle={title}
     title="Anna Borja"
   />
+
+  <div
+    class="content-container-outer flexbox-vertical with-responsive-padding-inline"
+  >
+    <div class="content-container-inner flexbox-vertical">
+      <section>
+        <h1 class="section-title">Writing</h1>
+      </section>
+
+      <section>
+        <h1 class="section-title">Art</h1>
+      </section>
+
+      <section>
+        <h1 class="section-title">Programming</h1>
+      </section>
+
+      <section>
+        <h1 class="section-title">Cinematics</h1>
+      </section>
+    </div>
+  </div>
 </AppLayout>
+
+<style>
+  .content-container-inner {
+    gap: var(--spacing-9);
+  }
+
+  .content-container-outer {
+    align-items: center;
+    padding-block: var(--spacing-7);
+  }
+
+  .section-title {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .content-container-inner {
+      max-inline-size: var(--sizing-16);
+    }
+  }
+</style>

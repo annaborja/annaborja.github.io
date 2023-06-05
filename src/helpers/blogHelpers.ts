@@ -29,7 +29,7 @@ export function getBlogPostFullTitle(frontmatter: BlogPostFrontmatter): string {
   const whatImXTag = tags.find((tag) => whatImXTagSet.has(tag));
 
   if (whatImXTag) {
-    titleSegments.unshift(`${whatImXTag}:`);
+    titleSegments.unshift(`${whatImXTag} |`);
   }
 
   if (videoGameConsoleTag) {

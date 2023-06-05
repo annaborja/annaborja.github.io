@@ -10,7 +10,7 @@ const allPosts = (await Astro.glob<BlogPostFrontmatter>("./*.md")).filter(
   (post) => !post.frontmatter.draft
 );
 
-const listItemSpacing = "var(--spacing-5)";
+const listItemSpacing = "var(--spacing-6)";
 ---
 
 <BlogLayout>
@@ -37,7 +37,7 @@ const listItemSpacing = "var(--spacing-5)";
 
 <style define:vars={{ listItemSpacing }}>
   .content {
-    padding-block: var(--spacing-1);
+    padding-block: var(--spacing-4);
     text-align: center;
   }
 
