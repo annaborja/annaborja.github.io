@@ -33,19 +33,21 @@ const pathname = Astro.url.pathname;
             { label: "Home", path: "/" },
             { label: "Projects", path: "/projects" },
             { label: "Skills", path: "/skills" },
-            { label: "Blog", path: "/blog" },
-          ].map(({ label, path }) => (
+            { hasChildren: true, label: "Blog", path: "/blog" },
+          ].map((link) => (
             <a
               class:list={[
                 "app-nav-link",
                 {
-                  "app-nav-link-active": pathname === path,
-                  "app-nav-link-home": path === homePath,
+                  "app-nav-link-active":
+                    pathname === link.path ||
+                    (link.hasChildren && pathname.startsWith(`${link.path}/`)),
+                  "app-nav-link-home": link.path === homePath,
                 },
               ]}
-              href={path}
+              href={link.path}
             >
-              {label}
+              {link.label}
             </a>
           ))
         }

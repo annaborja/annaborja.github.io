@@ -1,0 +1,49 @@
+---
+import {
+  BlogPostFrontmatter,
+  formatBlogPostDate,
+  getBlogPostFullTitle,
+} from "../../helpers/blogHelpers";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+const allPosts = await Astro.glob<BlogPostFrontmatter>("./*.md");
+
+const listItemSpacing = "var(--spacing-5)";
+---
+
+<BlogLayout>
+  <div class="content">
+    <h1 class="heading">Latest Posts</h1>
+
+    <ul class="list-without-markers">
+      {
+        allPosts
+          .sort((a, b) => b.file.localeCompare(a.file))
+          .map((post) => (
+            <li>
+              <a class="text-link" href={post.url}>
+                {getBlogPostFullTitle(post.frontmatter)}
+              </a>
+
+              <div>{formatBlogPostDate(post.frontmatter)}</div>
+            </li>
+          ))
+      }
+    </ul>
+  </div>
+</BlogLayout>
+
+<style define:vars={{ listItemSpacing }}>
+  .content {
+    padding-block: var(--spacing-1);
+    text-align: center;
+  }
+
+  .heading {
+    margin-block-end: var(--listItemSpacing);
+  }
+
+  .list-without-markers {
+    gap: var(--listItemSpacing);
+  }
+</style>

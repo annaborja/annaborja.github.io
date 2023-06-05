@@ -1,0 +1,29 @@
+---
+import HeroBanner from "../components/HeroBanner.astro";
+import AppLayout from "./AppLayout.astro";
+---
+
+<AppLayout>
+  <HeroBanner
+    patternSrc="url('/images/patterns/graph-paper.svg')"
+    subtitle="Blog"
+    title="Anna Borja"
+  />
+
+  <div class="content">
+    <slot />
+  </div>
+</AppLayout>
+
+<style>
+  .content {
+    padding-block: var(--spacing-5);
+    padding-inline: var(--spacing-4);
+  }
+
+  @media (min-width: 768px) {
+    .content {
+      padding-inline: var(--spacing-5);
+    }
+  }
+</style>
