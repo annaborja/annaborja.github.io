@@ -4,6 +4,7 @@ import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 
 export interface BlogPostFrontmatter {
+  draft?: boolean;
   posted_on: string;
   tags?: string[];
   title: string;

@@ -6,7 +6,9 @@ import {
 } from "../../helpers/blogHelpers";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 
-const allPosts = await Astro.glob<BlogPostFrontmatter>("./*.md");
+const allPosts = (await Astro.glob<BlogPostFrontmatter>("./*.md")).filter(
+  (post) => !post.frontmatter.draft
+);
 
 const listItemSpacing = "var(--spacing-5)";
 ---
