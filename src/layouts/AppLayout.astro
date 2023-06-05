@@ -11,11 +11,11 @@ const { title } = Astro.props;
 
 const baseTitle = "Anna Borja | Narrative Designer";
 const homePath = "/";
-const links: { hasChildren?: boolean; label: string; path: string }[] = [
-  { label: "Home", path: "/" },
+const links: { label: string; path: string }[] = [
+  { label: "Home", path: homePath },
   { label: "Projects", path: "/projects" },
   { label: "Skills", path: "/skills" },
-  { hasChildren: true, label: "Blog", path: "/blog" },
+  { label: "Blog", path: "/blog" },
 ];
 const pathname = Astro.url.pathname;
 ---
@@ -43,7 +43,8 @@ const pathname = Astro.url.pathname;
                 {
                   "app-nav-link-active":
                     pathname === link.path ||
-                    (link.hasChildren && pathname.startsWith(`${link.path}/`)),
+                    (link.path !== homePath &&
+                      pathname.startsWith(`${link.path}/`)),
                   "app-nav-link-home": link.path === homePath,
                 },
               ]}

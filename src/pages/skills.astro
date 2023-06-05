@@ -3,6 +3,7 @@ import HeroBanner from "../components/HeroBanner.astro";
 import AppLayout from "../layouts/AppLayout.astro";
 
 const title = "Skills";
+const workSampleLinkDimension = "var(--sizing-11)";
 ---
 
 <AppLayout title={title}>
@@ -16,28 +17,54 @@ const title = "Skills";
     class="content-container-outer flexbox-vertical with-responsive-padding-inline"
   >
     <div class="content-container-inner flexbox-vertical">
-      <section>
-        <h1 class="section-title">Writing</h1>
-      </section>
+      <div class="flexbox-vertical flexbox-vertical-paragraphs">
+        <p>
+          If you want to assess my game design skills, I suggest heading over to
+          the <a class="text-link" href="/projects">Projects</a> page. However, if
+          you’re also interested in the wider variety of creative experience and
+          knowledge that I could bring to a team, then you’re in the right place.
+        </p>
+      </div>
 
-      <section>
-        <h1 class="section-title">Art</h1>
-      </section>
+      <div class="flexbox-vertical sections-container">
+        <section class="section">
+          <h1 class="section-title">Writing</h1>
 
-      <section>
-        <h1 class="section-title">Programming</h1>
-      </section>
+          <div class="flexbox-vertical flexbox-vertical-paragraphs">
+            <p>
+              I believe that the foundation of an impactful work of art—whether
+              it be a video game, a novel, a film, or something else entirely—is
+              often a great story. A piece of writing moves me when...
+            </p>
+          </div>
 
-      <section>
-        <h1 class="section-title">Cinematics</h1>
-      </section>
+          <h2 class="section-work-samples-heading">Writing Samples</h2>
+
+          <ul class="section-work-samples-list">
+            <li>Foo</li>
+            <li>Bar</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h1 class="section-title">Art</h1>
+        </section>
+
+        <section class="section">
+          <h1 class="section-title">Programming</h1>
+        </section>
+
+        <section class="section">
+          <h1 class="section-title">Cinematics</h1>
+        </section>
+      </div>
     </div>
   </div>
 </AppLayout>
 
-<style>
+<style define:vars={{ workSampleLinkDimension }}>
   .content-container-inner {
-    gap: var(--spacing-9);
+    gap: var(--spacing-8);
   }
 
   .content-container-outer {
@@ -46,7 +73,31 @@ const title = "Skills";
   }
 
   .section-title {
+    margin-block-end: var(--spacing-3);
     text-align: center;
+  }
+
+  .section-work-samples-heading {
+    margin-block-end: var(--spacing-3);
+    margin-block-start: var(--spacing-7);
+  }
+
+  .section-work-samples-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-5);
+  }
+
+  .section-work-samples-list li {
+    background-color: #ddd;
+    border-radius: var(--border-radius-1);
+    height: var(--workSampleLinkDimension);
+    padding: var(--spacing-4);
+    width: var(--workSampleLinkDimension);
+  }
+
+  .sections-container {
+    gap: var(--spacing-9);
   }
 
   @media (min-width: 768px) {
