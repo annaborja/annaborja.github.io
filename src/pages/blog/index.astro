@@ -17,7 +17,7 @@ const listItemSpacing = "var(--spacing-6)";
   <div class="content">
     <h1 class="heading">Latest Posts</h1>
 
-    <ul class="list-without-markers">
+    <ul class="posts-list">
       {
         allPosts
           .sort((a, b) => b.file.localeCompare(a.file))
@@ -45,7 +45,7 @@ const listItemSpacing = "var(--spacing-6)";
     margin-block-end: var(--listItemSpacing);
   }
 
-  .list-without-markers {
+  .posts-list {
     gap: var(--listItemSpacing);
   }
 </style>
