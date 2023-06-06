@@ -19,31 +19,35 @@ const workSampleLinkDimension = "var(--sizing-11)";
     <div class="content-container-inner flexbox-vertical">
       <div class="flexbox-vertical flexbox-vertical-paragraphs">
         <p>
-          If you want to assess my game design skills, I suggest heading over to
-          the <a class="text-link" href="/projects">Projects</a> page. However, if
-          you’re also interested in the wider variety of creative experience and
-          knowledge that I could bring to a team, then you’re in the right place.
+          If you want to see my game design skills in context, I suggest heading
+          over to the <a class="text-link" href="/projects">Projects</a> page. However,
+          if you’re also interested in the wider variety of creative knowledge and
+          experience that I could bring to a team, then you’re in the right place.
         </p>
       </div>
 
       <div class="flexbox-vertical sections-container">
-        <section class="section">
-          <h1 class="section-title">Writing</h1>
+        <section class="flexbox-vertical section">
+          <div>
+            <h1 class="section-title">Writing</h1>
 
-          <div class="flexbox-vertical flexbox-vertical-paragraphs">
-            <p>
-              I believe that the foundation of an impactful work of art—whether
-              it be a video game, a novel, a film, or something else entirely—is
-              often a great story. A piece of writing moves me when...
-            </p>
+            <div class="flexbox-vertical flexbox-vertical-paragraphs">
+              <p>
+                My favorite examples of video game writing not only contribute
+                to the player’s immersion in the world but also further the
+                development of the game’s story, characters, or themes.
+              </p>
+            </div>
           </div>
 
-          <h2 class="section-work-samples-heading">Writing Samples</h2>
+          <div>
+            <h2 class="section-subheading">Writing Samples</h2>
 
-          <ul class="section-work-samples-list">
-            <li>Foo</li>
-            <li>Bar</li>
-          </ul>
+            <ul class="work-samples-list">
+              <li>Foo</li>
+              <li>Bar</li>
+            </ul>
+          </div>
         </section>
 
         <section class="section">
@@ -72,32 +76,35 @@ const workSampleLinkDimension = "var(--sizing-11)";
     padding-block: var(--spacing-7);
   }
 
+  .section {
+    gap: var(--spacing-7);
+  }
+
+  .section-subheading {
+    margin-block-end: var(--spacing-3);
+  }
+
   .section-title {
     margin-block-end: var(--spacing-3);
     text-align: center;
   }
 
-  .section-work-samples-heading {
-    margin-block-end: var(--spacing-3);
-    margin-block-start: var(--spacing-7);
+  .sections-container {
+    gap: var(--spacing-9);
   }
 
-  .section-work-samples-list {
+  .work-samples-list {
     flex-direction: row;
     flex-wrap: wrap;
     gap: var(--spacing-5);
   }
 
-  .section-work-samples-list li {
+  .work-samples-list li {
     background-color: #ddd;
     border-radius: var(--border-radius-1);
     height: var(--workSampleLinkDimension);
     padding: var(--spacing-4);
     width: var(--workSampleLinkDimension);
-  }
-
-  .sections-container {
-    gap: var(--spacing-9);
   }
 
   @media (min-width: 768px) {

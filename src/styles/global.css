@@ -25,7 +25,8 @@ h2 {
 }
 
 h3 {
-  font-size: var(--font-size-5);
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-0);
 }
 
 h4 {
