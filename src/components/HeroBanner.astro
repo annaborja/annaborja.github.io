@@ -5,7 +5,7 @@ export interface Props {
   gradientColorLight?: string;
   patternSrc?: string;
   subtitle?: string;
-  title: string;
+  title?: string;
 }
 
 const {
@@ -14,7 +14,7 @@ const {
   gradientColorLight = "var(--color-primary-1-1)",
   patternSrc,
   subtitle,
-  title,
+  title = "Anna Borja",
 } = Astro.props;
 ---
 

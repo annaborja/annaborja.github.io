@@ -1,13 +1,14 @@
 ---
 import HeroBanner from "../components/HeroBanner.astro";
 import AppLayout from "./AppLayout.astro";
+
+const title = "Blog";
 ---
 
-<AppLayout>
+<AppLayout title={title}>
   <HeroBanner
     patternSrc="url('/images/patterns/graph-paper.svg')"
-    subtitle="Blog"
-    title="Anna Borja"
+    subtitle={title}
   />
 
   <div class="content-container with-responsive-padding-inline">
