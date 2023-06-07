@@ -1,6 +1,6 @@
 ---
 draft: false
-genre: "platformer"
+genre: Platformer
 layout: ../../layouts/ProjectLayout.astro
 tags: ["platformer"]
 title: "Form Family: Graduation"

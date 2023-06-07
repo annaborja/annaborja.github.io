@@ -170,7 +170,4 @@
   --color-colorful-1: rgb(176, 166, 242);
   --color-colorful-2: #89d9a5;
   --color-colorful-3: #f28080;
-
-  --color-platformer: hsl(248, 74%, 80%);
-  --color-platformer-t1: hsla(248, 74%, 80%, var(--color-transparency-1));
 }

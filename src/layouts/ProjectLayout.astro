@@ -8,7 +8,7 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 
 <AppLayout title={frontmatter.title}>
   <HeroBanner
-    patternSrc="url('/images/patterns/graph-paper.svg')"
+    patternSrc="url('/images/patterns/jigsaw.svg')"
     subtitle="Projects"
   />
 
@@ -16,6 +16,10 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
     <a class="projects-home-link text-link" href="/projects">Projects Home</a>
 
     <h1>{frontmatter.title}</h1>
+
+    <div class="subtitle">
+      {frontmatter.year} • {frontmatter.genre}
+    </div>
 
     <slot />
   </div>
@@ -33,5 +37,9 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
   .projects-home-link {
     display: inline-block;
     margin-block-end: var(--spacing-7);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-4);
   }
 </style>

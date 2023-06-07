@@ -25,8 +25,8 @@ const title = "Projects";
         <p>
           The following projects showcase my game design skills in context. In
           many of these projects, I also performed other functions such as
-          writing, concept art, and 3D modeling. Click into each project to find
-          out more information.
+          programming, writing, concept art, and sound design. Click into each
+          project to find out more information.
         </p>
       </div>
 
@@ -34,14 +34,7 @@ const title = "Projects";
         {
           projects.map((project) => (
             <li>
-              <a
-                class:list={[
-                  "flexbox-vertical",
-                  "project-link",
-                  `project-link-${project.frontmatter.genre}`,
-                ]}
-                href={project.url}
-              >
+              <a class="flexbox-vertical project-link" href={project.url}>
                 <span class="project-link-title">
                   {project.frontmatter.title}
                 </span>
@@ -76,7 +69,7 @@ const title = "Projects";
   }
 
   .project-link {
-    background-color: #ddd;
+    background-color: var(--color-neutral-1);
     border-radius: var(--border-radius-1);
     color: var(--color-neutral-9);
     height: var(--projectLinkDimension);
@@ -87,20 +80,16 @@ const title = "Projects";
     width: var(--projectLinkDimension);
   }
 
+  .project-link:hover {
+    background-color: var(--color-neutral-2);
+  }
+
   .project-link-genre {
     font-size: var(--font-size-2);
   }
 
   .project-link-label {
     font-weight: var(--font-weight-2);
-  }
-
-  .project-link-platformer {
-    background-color: var(--color-platformer-t1);
-  }
-
-  .project-link-platformer:hover {
-    background-color: var(--color-platformer);
   }
 
   .project-link-title {
