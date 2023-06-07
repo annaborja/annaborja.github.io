@@ -1,11 +1,13 @@
 ---
-import BlogLayout from "./BlogLayout.astro";
+import HeroBanner from "../components/HeroBanner.astro";
 import {
   BlogPostFrontmatter,
+  getBlogPostFullTitle,
   videoGameConsoleTagSet,
   whatImXTagSet,
 } from "../helpers/blogHelpers";
 import { formatBlogPostDate } from "../helpers/blogHelpers";
+import AppLayout from "./AppLayout.astro";
 
 const frontmatter = Astro.props.frontmatter as BlogPostFrontmatter;
 const tags = frontmatter.tags || [];
@@ -18,13 +20,18 @@ if (whatImXTag) subTitleSegments.push(whatImXTag);
 if (videoGameConsoleTag) subTitleSegments.push(videoGameConsoleTag);
 ---
 
-<BlogLayout>
-  <a class="text-link" href="/blog">Blog Home</a>
+<AppLayout title={getBlogPostFullTitle(frontmatter)}>
+  <HeroBanner
+    patternSrc="url('/images/patterns/graph-paper.svg')"
+    subtitle="Blog"
+  />
 
-  <div class="content">
+  <div class="content-container with-responsive-padding-inline">
+    <a class="blog-home-link text-link" href="/blog">Blog Home</a>
+
     <div class="post-date">{formatBlogPostDate(frontmatter)}</div>
 
-    <h1 class="title">{frontmatter.title}</h1>
+    <h1>{frontmatter.title}</h1>
 
     {
       subTitleSegments.length > 0 && (
@@ -34,15 +41,21 @@ if (videoGameConsoleTag) subTitleSegments.push(videoGameConsoleTag);
 
     <slot />
   </div>
-</BlogLayout>
+</AppLayout>
 
 <style>
-  :global(.content h2) {
+  :global(.content-container h2) {
     margin-block-start: var(--spacing-7);
   }
 
-  .content {
-    margin-block-start: var(--spacing-6);
+  .blog-home-link {
+    display: inline-block;
+    margin-block-end: var(--spacing-7);
+  }
+
+  .content-container {
+    padding-block-end: var(--spacing-7);
+    padding-block-start: var(--spacing-5);
   }
 
   .post-date {

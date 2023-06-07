@@ -1,0 +1,125 @@
+---
+import HeroBanner from "../../components/HeroBanner.astro";
+import type { ProjectFrontmatter } from "../../helpers/projectHelpers";
+import AppLayout from "../../layouts/AppLayout.astro";
+
+const projects = (await Astro.glob<ProjectFrontmatter>("./*.md")).filter(
+  (project) => !project.frontmatter.draft
+);
+
+const projectLinkDimension = "var(--sizing-12)";
+const title = "Projects";
+---
+
+<AppLayout title={title}>
+  <HeroBanner
+    patternSrc="url('/images/patterns/jigsaw.svg')"
+    subtitle={title}
+  />
+
+  <div
+    class="content-container-outer flexbox-vertical with-responsive-padding-inline"
+  >
+    <div class="content-container-inner flexbox-vertical">
+      <div class="flexbox-vertical flexbox-vertical-paragraphs">
+        <p>
+          The following projects showcase my game design skills in context. In
+          many of these projects, I also performed other functions such as
+          writing, concept art, and 3D modeling. Click into each project to find
+          out more information.
+        </p>
+      </div>
+
+      <ul class="projects-list">
+        {
+          projects.map((project) => (
+            <li>
+              <a
+                class:list={[
+                  "flexbox-vertical",
+                  "project-link",
+                  `project-link-${project.frontmatter.genre}`,
+                ]}
+                href={project.url}
+              >
+                <span class="project-link-title">
+                  {project.frontmatter.title}
+                </span>
+
+                <span class="flexbox-vertical">
+                  <span class="project-link-year">
+                    {project.frontmatter.year}
+                  </span>
+
+                  <span class="project-link-genre">
+                    <span class="project-link-label">Genre:</span>{" "}
+                    {project.frontmatter.genre}
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</AppLayout>
+
+<style define:vars={{ projectLinkDimension }}>
+  .content-container-inner {
+    gap: var(--spacing-7);
+  }
+
+  .content-container-outer {
+    align-items: center;
+    padding-block: var(--spacing-7);
+  }
+
+  .project-link {
+    background-color: #ddd;
+    border-radius: var(--border-radius-1);
+    color: var(--color-neutral-9);
+    height: var(--projectLinkDimension);
+    justify-content: space-between;
+    padding: var(--spacing-4);
+    text-decoration: none;
+    transition: background-color var(--transition-duration-3);
+    width: var(--projectLinkDimension);
+  }
+
+  .project-link-genre {
+    font-size: var(--font-size-2);
+  }
+
+  .project-link-label {
+    font-weight: var(--font-weight-2);
+  }
+
+  .project-link-platformer {
+    background-color: var(--color-platformer-t1);
+  }
+
+  .project-link-platformer:hover {
+    background-color: var(--color-platformer);
+  }
+
+  .project-link-title {
+    font-size: var(--font-size-5);
+  }
+
+  .project-link-year {
+    font-size: var(--font-size-4);
+  }
+
+  .projects-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-5);
+  }
+
+  @media (min-width: 768px) {
+    .content-container-inner {
+      max-inline-size: var(--sizing-16);
+    }
+  }
+</style>

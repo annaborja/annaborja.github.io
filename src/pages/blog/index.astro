@@ -1,20 +1,27 @@
 ---
+import HeroBanner from "../../components/HeroBanner.astro";
 import {
   BlogPostFrontmatter,
   formatBlogPostDate,
   getBlogPostFullTitle,
 } from "../../helpers/blogHelpers";
-import BlogLayout from "../../layouts/BlogLayout.astro";
+import AppLayout from "../../layouts/AppLayout.astro";
 
 const allPosts = (await Astro.glob<BlogPostFrontmatter>("./*.md")).filter(
   (post) => !post.frontmatter.draft
 );
 
 const listItemSpacing = "var(--spacing-6)";
+const title = "Blog";
 ---
 
-<BlogLayout>
-  <div class="content">
+<AppLayout title={title}>
+  <HeroBanner
+    patternSrc="url('/images/patterns/graph-paper.svg')"
+    subtitle={title}
+  />
+
+  <div class="content-container with-responsive-padding-inline">
     <h1 class="heading">Latest Posts</h1>
 
     <ul class="posts-list">
@@ -33,11 +40,11 @@ const listItemSpacing = "var(--spacing-6)";
       }
     </ul>
   </div>
-</BlogLayout>
+</AppLayout>
 
 <style define:vars={{ listItemSpacing }}>
-  .content {
-    padding-block: var(--spacing-4);
+  .content-container {
+    padding-block: var(--spacing-7);
     text-align: center;
   }
 

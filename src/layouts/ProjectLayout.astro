@@ -1,0 +1,37 @@
+---
+import AppLayout from "./AppLayout.astro";
+import type { ProjectFrontmatter } from "../helpers/projectHelpers";
+import HeroBanner from "../components/HeroBanner.astro";
+
+const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
+---
+
+<AppLayout title={frontmatter.title}>
+  <HeroBanner
+    patternSrc="url('/images/patterns/graph-paper.svg')"
+    subtitle="Projects"
+  />
+
+  <div class="content-container with-responsive-padding-inline">
+    <a class="projects-home-link text-link" href="/projects">Projects Home</a>
+
+    <h1>{frontmatter.title}</h1>
+
+    <slot />
+  </div>
+</AppLayout>
+
+<style>
+  :global(.content-container h2) {
+    margin-block-start: var(--spacing-7);
+  }
+
+  .content-container {
+    padding-block: var(--spacing-5);
+  }
+
+  .projects-home-link {
+    display: inline-block;
+    margin-block-end: var(--spacing-7);
+  }
+</style>

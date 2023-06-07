@@ -139,9 +139,12 @@
   --transition-duration-0: 0ms;
   --transition-duration-1: 125ms;
   --transition-duration-2: 250ms;
+  --transition-duration-3: 500ms;
 }
 
 .theme-light {
+  --color-transparency-1: 0.6;
+
   --color-neutral-0: hsl(206, 33%, 96%);
   --color-neutral-1: hsl(212, 33%, 89%);
   --color-neutral-2: hsl(210, 31%, 80%);
@@ -164,7 +167,10 @@
   --color-primary-1-8: hsl(205, 87%, 29%);
   --color-primary-1-9: hsl(205, 100%, 21%);
 
-  --color-colorful-1: #b1a7f2;
+  --color-colorful-1: rgb(176, 166, 242);
   --color-colorful-2: #89d9a5;
   --color-colorful-3: #f28080;
+
+  --color-platformer: hsl(248, 74%, 80%);
+  --color-platformer-t1: hsla(248, 74%, 80%, var(--color-transparency-1));
 }
