@@ -25,8 +25,8 @@ const title = "Projects";
         <p>
           The following projects showcase my game design skills in context. In
           many of these projects, I also performed other functions such as
-          programming, writing, concept art, and sound design. Click into each
-          project to find out more information.
+          programming, writing, concept art creation, and sound design. Click
+          into each project to find out more information.
         </p>
       </div>
 
@@ -44,9 +44,8 @@ const title = "Projects";
                     {project.frontmatter.year}
                   </span>
 
-                  <span class="project-link-genre">
-                    <span class="project-link-label">Genre:</span>{" "}
-                    {project.frontmatter.genre}
+                  <span class="project-link-blurb">
+                    {project.frontmatter.blurb}
                   </span>
                 </span>
               </a>
@@ -84,7 +83,7 @@ const title = "Projects";
     background-color: var(--color-neutral-2);
   }
 
-  .project-link-genre {
+  .project-link-blurb {
     font-size: var(--font-size-2);
   }
 
@@ -97,7 +96,7 @@ const title = "Projects";
   }
 
   .project-link-year {
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-3);
   }
 
   .projects-list {

@@ -1,8 +1,9 @@
 ---
+blurb: "Family-friendly fantasy platformer"
 draft: false
-genre: Platformer
+genre: "Platformer"
 layout: ../../layouts/ProjectLayout.astro
-tags: ["platformer"]
+tags: ["platformer", "fantasy", "family-friendly"]
 title: "Form Family: Graduation"
 year: 2023
 ---
