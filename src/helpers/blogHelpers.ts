@@ -10,10 +10,10 @@ export interface BlogPostFrontmatter {
   title: string;
 }
 
-const videoGameConsoleNameMap = new Map([["PlayStation 4", "PS4"]]);
+const blogPostModifierNameMap = new Map([["PlayStation 4", "PS4"]]);
 
-export const videoGameConsoleTagSet = new Set(["PlayStation 4"]);
-export const whatImXTagSet = new Set(["What I’m Playing"]);
+export const blogPostModifierTagSet = new Set(["PlayStation 4"]);
+export const blogPostSeriesTagSet = new Set(["What I’m Playing"]);
 
 export function formatBlogPostDate(frontmatter: BlogPostFrontmatter): string {
   return dayjs.utc(frontmatter.posted_on).format("MMMM D, YYYY");
@@ -23,19 +23,19 @@ export function getBlogPostFullTitle(frontmatter: BlogPostFrontmatter): string {
   const tags = frontmatter.tags || [];
   const titleSegments = [frontmatter.title];
 
-  const videoGameConsoleTag = tags.find((tag) =>
-    videoGameConsoleTagSet.has(tag)
+  const blogPostModifierTag = tags.find((tag) =>
+    blogPostModifierTagSet.has(tag)
   );
-  const whatImXTag = tags.find((tag) => whatImXTagSet.has(tag));
+  const blogPostSeriesTag = tags.find((tag) => blogPostSeriesTagSet.has(tag));
 
-  if (whatImXTag) {
-    titleSegments.unshift(`${whatImXTag}:`);
+  if (blogPostSeriesTag) {
+    titleSegments.unshift(`${blogPostSeriesTag}:`);
   }
 
-  if (videoGameConsoleTag) {
+  if (blogPostModifierTag) {
     titleSegments.push(
       `(${
-        videoGameConsoleNameMap.get(videoGameConsoleTag) || videoGameConsoleTag
+        blogPostModifierNameMap.get(blogPostModifierTag) || blogPostModifierTag
       })`
     );
   }

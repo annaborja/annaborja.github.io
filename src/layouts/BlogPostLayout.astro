@@ -2,9 +2,9 @@
 import HeroBanner from "../components/HeroBanner.astro";
 import {
   BlogPostFrontmatter,
+  blogPostModifierTagSet,
+  blogPostSeriesTagSet,
   getBlogPostFullTitle,
-  videoGameConsoleTagSet,
-  whatImXTagSet,
 } from "../helpers/blogHelpers";
 import { formatBlogPostDate } from "../helpers/blogHelpers";
 import AppLayout from "./AppLayout.astro";
@@ -13,11 +13,11 @@ const frontmatter = Astro.props.frontmatter as BlogPostFrontmatter;
 const tags = frontmatter.tags || [];
 const subTitleSegments = [];
 
-const videoGameConsoleTag = tags.find((tag) => videoGameConsoleTagSet.has(tag));
-const whatImXTag = tags.find((tag) => whatImXTagSet.has(tag));
+const blogPostModifierTag = tags.find((tag) => blogPostModifierTagSet.has(tag));
+const blogPostSeriesTag = tags.find((tag) => blogPostSeriesTagSet.has(tag));
 
-if (whatImXTag) subTitleSegments.push(whatImXTag);
-if (videoGameConsoleTag) subTitleSegments.push(videoGameConsoleTag);
+if (blogPostSeriesTag) subTitleSegments.push(blogPostSeriesTag);
+if (blogPostModifierTag) subTitleSegments.push(blogPostModifierTag);
 ---
 
 <AppLayout title={getBlogPostFullTitle(frontmatter)}>
