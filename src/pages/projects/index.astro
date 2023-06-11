@@ -21,17 +21,6 @@ const title = "Projects";
     class="content-container-outer flexbox-vertical with-responsive-padding-inline"
   >
     <div class="content-container-inner flexbox-vertical">
-      <div
-        class="description-container flexbox-vertical flexbox-vertical-paragraphs"
-      >
-        <p>
-          The following projects showcase my game design skills in context. In
-          many of these projects, I also performed other functions such as
-          programming, writing, concept art creation, and sound design. Click
-          into each project to find out more information.
-        </p>
-      </div>
-
       <ul class="projects-list">
         {
           projects.map((project) => (
@@ -61,11 +50,6 @@ const title = "Projects";
   .content-container-outer {
     align-items: center;
     padding-block: var(--spacing-7);
-  }
-
-  .description-container {
-    margin-inline: auto;
-    max-inline-size: var(--sizing-16);
   }
 
   .project-link {
