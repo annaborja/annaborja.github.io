@@ -1,6 +1,5 @@
 ---
-blurb: "Wholesome fantasy platformer"
-draft: false
+blurb: "A wholesome fantasy 3D platformer"
 genre: "Platformer"
 layout: ../../layouts/ProjectLayout.astro
 tags: ["platformer", "fantasy", "wholesome"]
@@ -8,10 +7,20 @@ title: "Form Family: Graduation"
 year: 2023
 ---
 
-## Foo
+## Introduction
 
-Lorem ipsum...
+## Vision
 
-## Bar
+## Story
 
-Lorem ipsum...
+## Gameplay
+
+## Levels
+
+## Art
+
+## UI
+
+## Sound
+
+## Programming

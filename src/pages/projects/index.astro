@@ -3,9 +3,9 @@ import HeroBanner from "../../components/HeroBanner.astro";
 import type { ProjectFrontmatter } from "../../helpers/projectHelpers";
 import AppLayout from "../../layouts/AppLayout.astro";
 
-const projects = (await Astro.glob<ProjectFrontmatter>("./*.md")).filter(
-  (project) => !project.frontmatter.draft
-);
+const projects = (await Astro.glob<ProjectFrontmatter>("./*.md"))
+  .filter((project) => !project.frontmatter.draft)
+  .sort((a, b) => b.file.localeCompare(a.file));
 
 const projectLinkDimension = "var(--sizing-12)";
 const title = "Projects";
@@ -21,7 +21,9 @@ const title = "Projects";
     class="content-container-outer flexbox-vertical with-responsive-padding-inline"
   >
     <div class="content-container-inner flexbox-vertical">
-      <div class="flexbox-vertical flexbox-vertical-paragraphs">
+      <div
+        class="description-container flexbox-vertical flexbox-vertical-paragraphs"
+      >
         <p>
           The following projects showcase my game design skills in context. In
           many of these projects, I also performed other functions such as
@@ -39,14 +41,8 @@ const title = "Projects";
                   {project.frontmatter.title}
                 </span>
 
-                <span class="flexbox-vertical">
-                  <span class="project-link-year">
-                    {project.frontmatter.year}
-                  </span>
-
-                  <span class="project-link-blurb">
-                    {project.frontmatter.blurb}
-                  </span>
+                <span class="project-link-blurb">
+                  {project.frontmatter.blurb}
                 </span>
               </a>
             </li>
@@ -65,6 +61,11 @@ const title = "Projects";
   .content-container-outer {
     align-items: center;
     padding-block: var(--spacing-7);
+  }
+
+  .description-container {
+    margin-inline: auto;
+    max-inline-size: var(--sizing-16);
   }
 
   .project-link {
@@ -95,19 +96,16 @@ const title = "Projects";
     font-size: var(--font-size-5);
   }
 
-  .project-link-year {
-    font-size: var(--font-size-3);
-  }
-
   .projects-list {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--spacing-5);
+    gap: var(--spacing-7);
+    justify-content: center;
   }
 
   @media (min-width: 768px) {
     .content-container-inner {
-      max-inline-size: var(--sizing-16);
+      max-inline-size: var(--sizing-17);
     }
   }
 </style>
