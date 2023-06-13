@@ -12,25 +12,34 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
     subtitle="Projects"
   />
 
-  <div class="content-container with-responsive-padding-inline">
-    <a class="projects-home-link text-link" href="/projects">Projects Home</a>
+  <div
+    class="content-container-outer flexbox-vertical with-responsive-padding-inline"
+  >
+    <div class="content-container-inner">
+      <a class="projects-home-link text-link" href="/projects">Projects Home</a>
 
-    <h1>{frontmatter.title}</h1>
+      <h1>{frontmatter.title}</h1>
 
-    <div class="subtitle">
-      {frontmatter.year} • {frontmatter.genre}
+      <div class="subtitle">
+        {frontmatter.year} • {frontmatter.genre}
+      </div>
+
+      <slot />
     </div>
-
-    <slot />
   </div>
 </AppLayout>
 
 <style>
-  :global(.content-container h2) {
+  :global(.content-container-inner h2) {
     margin-block-start: var(--spacing-7);
   }
 
-  .content-container {
+  :global(.content-container-inner p) {
+    margin-block: var(--spacing-5);
+  }
+
+  .content-container-outer {
+    align-items: center;
     padding-block-end: var(--spacing-7);
     padding-block-start: var(--spacing-5);
   }
@@ -42,5 +51,11 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 
   .subtitle {
     font-size: var(--font-size-4);
+  }
+
+  @media (min-width: 768px) {
+    .content-container-inner {
+      max-inline-size: var(--sizing-17);
+    }
   }
 </style>

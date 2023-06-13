@@ -24,7 +24,7 @@ const title = "Blog";
   <div class="content-container with-responsive-padding-inline">
     <h1 class="heading">Latest Posts</h1>
 
-    <ul class="posts-list">
+    <ul class="list-without-bullets posts-list">
       {
         allPosts
           .sort((a, b) => b.file.localeCompare(a.file))
