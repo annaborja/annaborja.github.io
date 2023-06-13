@@ -3,7 +3,7 @@ import HeroBanner from "../../components/HeroBanner.astro";
 import type { ProjectFrontmatter } from "../../helpers/projectHelpers";
 import AppLayout from "../../layouts/AppLayout.astro";
 
-const projects = (await Astro.glob<ProjectFrontmatter>("./*.md"))
+const projects = (await Astro.glob<ProjectFrontmatter>("./*.mdx"))
   .filter((project) => !project.frontmatter.draft)
   .sort((a, b) => b.file.localeCompare(a.file));
 

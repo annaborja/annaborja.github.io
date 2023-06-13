@@ -31,11 +31,75 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 
 <style>
   :global(.content-container-inner h2) {
+    margin-block-end: var(--spacing-4);
     margin-block-start: var(--spacing-7);
   }
 
+  :global(.content-container-inner h3) {
+    margin-block-end: var(--spacing-4);
+    margin-block-start: var(--spacing-6);
+  }
+
+  :global(.content-container-inner h4) {
+    margin-block-end: var(--spacing-3);
+    margin-block-start: var(--spacing-5);
+  }
+
   :global(.content-container-inner p) {
-    margin-block: var(--spacing-5);
+    margin-block-end: var(--spacing-5);
+  }
+
+  :global(.content-container-inner ul) {
+    margin-block-end: var(--spacing-5);
+  }
+
+  :global(.content-container-inner .note) {
+    background-color: var(--color-neutral-1);
+    border-color: var(--color-neutral-5);
+    border-radius: var(--border-radius-1);
+    border-style: solid;
+    border-width: var(--border-width-1);
+    font-size: var(--font-size-1);
+    gap: var(--spacing-4);
+    margin: var(--spacing-5);
+    padding: var(--spacing-4);
+  }
+
+  :global(.content-container-inner .note > *) {
+    margin-block: 0;
+  }
+
+  :global(.content-container-inner .tile-list) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-5);
+    justify-content: center;
+    margin-block: var(--spacing-6);
+  }
+
+  :global(.content-container-inner .tile-list *) {
+    margin-block: 0;
+  }
+
+  :global(.content-container-inner .tile-list p) {
+    font-size: var(--font-size-1);
+  }
+
+  :global(.content-container-inner .tile-list > li) {
+    border-color: var(--color-neutral-5);
+    border-radius: var(--border-radius-1);
+    border-style: solid;
+    border-width: var(--border-width-1);
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+  }
+
+  :global(.content-container-inner .tile-list-medium > li) {
+    width: var(--sizing-13);
+  }
+
+  :global(.content-container-inner .tile-list-small > li) {
+    width: var(--sizing-12);
   }
 
   .content-container-outer {
@@ -51,6 +115,7 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 
   .subtitle {
     font-size: var(--font-size-4);
+    margin-block-end: var(--spacing-6);
   }
 
   @media (min-width: 768px) {
