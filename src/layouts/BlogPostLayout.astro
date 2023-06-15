@@ -22,7 +22,7 @@ if (blogPostModifierTag) subTitleSegments.push(blogPostModifierTag);
 
 <AppLayout title={getBlogPostFullTitle(frontmatter)}>
   <HeroBanner
-    patternSrc="url('/images/patterns/graph-paper.svg')"
+    patternSrc="url('/images/global/hero-patterns/graph-paper.svg')"
     subtitle="Blog"
   />
 
@@ -65,5 +65,6 @@ if (blogPostModifierTag) subTitleSegments.push(blogPostModifierTag);
 
   .subtitle {
     font-size: var(--font-size-3);
+    margin-block-end: var(--spacing-6);
   }
 </style>

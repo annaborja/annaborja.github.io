@@ -8,7 +8,7 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 
 <AppLayout title={frontmatter.title}>
   <HeroBanner
-    patternSrc="url('/images/patterns/jigsaw.svg')"
+    patternSrc="url('/images/global/hero-patterns/jigsaw.svg')"
     subtitle="Projects"
   />
 
@@ -92,6 +92,10 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
     border-width: var(--border-width-1);
     gap: var(--spacing-4);
     padding: var(--spacing-4);
+  }
+
+  :global(.content-container-inner .tile-list-large > li) {
+    width: 100%;
   }
 
   :global(.content-container-inner .tile-list-medium > li) {
