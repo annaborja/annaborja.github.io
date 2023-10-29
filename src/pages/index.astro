@@ -1,12 +1,19 @@
 ---
 import HeroBanner from "../components/HeroBanner.astro";
+import type { ProjectFrontmatter } from "../helpers/projectHelpers";
 import AppLayout from "../layouts/AppLayout.astro";
+
+const projects = (await Astro.glob<ProjectFrontmatter>("./projects/*.mdx"))
+  .filter((project) => !project.frontmatter.draft)
+  .sort((a, b) => b.file.localeCompare(a.file));
+
+const projectLinkDimension = "var(--sizing-12)";
 ---
 
 <AppLayout>
   <HeroBanner
     patternSrc="url('/images/global/hero-patterns/floating-cogs.svg')"
-    subtitle="Game and Narrative Designer"
+    subtitle="Technical Game Designer"
   />
 
   <div
@@ -28,40 +35,79 @@ import AppLayout from "../layouts/AppLayout.astro";
         animation. I enjoy communicating and collaborating with engineers as
         well as with artists and other designers.
       </p>
+    </div>
 
-      <p class="text">
-        I design games because I love the process of combining efforts across
-        the spectrum of <span class="text-emphasis">human creativity</span> to create
-        a <span class="text-emphasis">cohesive</span> and <span
-          class="text-emphasis">impactful work of art</span
-        >.
-      </p>
+    <div class="content-container-inner flexbox-vertical">
+      <h1 class="heading">Projects</h1>
 
-      <p class="text">
-        To learn about my recent game design projects, head over to the <a
-          class="text-link"
-          href="/projects">Projects</a
-        > page.
-      </p>
+      <ul class="list-without-bullets projects-list">
+        {
+          projects.map((project) => (
+            <li>
+              <a class="flexbox-vertical project-link" href={project.url}>
+                <span class="project-link-title">
+                  {project.frontmatter.title}
+                </span>
 
-      <p class="text">
-        To read analyses of the latest media I’ve been enjoying—from video and
-        board games to movies, music, and books—check out my <a
-          class="text-link"
-          href="/blog">Blog</a
-        >.
-      </p>
+                <span class="project-link-blurb">
+                  {project.frontmatter.blurb}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
 
-  <style>
+  <style define:vars={{ projectLinkDimension }}>
     .content-container-inner {
       gap: var(--spacing-7);
     }
 
     .content-container-outer {
       align-items: center;
+      gap: var(--spacing-9);
       padding-block: var(--spacing-7);
+    }
+
+    .heading {
+      text-align: center;
+    }
+
+    .project-link {
+      background-color: var(--color-neutral-1);
+      border-radius: var(--border-radius-1);
+      color: var(--color-neutral-9);
+      height: var(--projectLinkDimension);
+      justify-content: space-between;
+      padding: var(--spacing-4);
+      text-decoration: none;
+      transition: background-color var(--transition-duration-3);
+      width: var(--projectLinkDimension);
+    }
+
+    .project-link:hover {
+      background-color: var(--color-neutral-2);
+    }
+
+    .project-link-blurb {
+      font-size: var(--font-size-2);
+    }
+
+    .project-link-label {
+      font-weight: var(--font-weight-2);
+    }
+
+    .project-link-title {
+      font-size: var(--font-size-5);
+    }
+
+    .projects-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--spacing-7);
+      justify-content: center;
     }
 
     .text {

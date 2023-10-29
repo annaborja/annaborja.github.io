@@ -13,7 +13,6 @@ const baseTitle = "Anna Borja - Game Designer";
 const homePath = "/";
 const links: { label: string; path: string }[] = [
   { label: "Home", path: homePath },
-  { label: "Projects", path: "/projects" },
   { label: "Blog", path: "/blog" },
 ];
 const pathname = Astro.url.pathname;
@@ -59,67 +58,116 @@ const pathname = Astro.url.pathname;
         <slot />
       </main>
 
-      <footer class="app-footer">
-        <span class="copyright-statement"> Copyright © 2023 Anna Borja</span>
+      <footer class="app-footer flexbox-vertical">
+        <p class="copyright-statement">Copyright © 2023 Anna Borja</p>
+
+        <ul class="credit-list list-without-bullets">
+          <li>
+            Built with <a
+              class="text-link"
+              href="https://astro.build/"
+              target="_blank">Astro</a
+            >
+
+            <li>
+              “Floating Cogs” and “Graph Paper” hero banner images from <a
+                class="text-link"
+                href="https://heropatterns.com/"
+                target="_blank">Hero Patterns</a
+              >, licensed under <a
+                class="text-link"
+                href="https://creativecommons.org/licenses/by/4.0/"
+                target="_blank">CC BY 4.0</a
+              >
+            </li>
+
+            <li>
+              <a
+                class="text-link"
+                href="https://fonts.google.com/specimen/Merriweather/about"
+                target="_blank">Merriweather</a
+              > and <a
+                class="text-link"
+                href="https://fonts.google.com/specimen/Open+Sans/about"
+                target="_blank">Open Sans</a
+              > fonts from
+              <a
+                class="text-link"
+                href="https://fonts.google.com/"
+                target="_blank">Google Fonts</a
+              >, licensed under <a
+                class="text-link"
+                href="https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL"
+                target="_blank">OFL</a
+              >
+            </li>
+          </li>
+        </ul>
       </footer>
     </div>
+
+    <style>
+      .app-content {
+        background-color: var(--color-neutral-0);
+        flex-grow: 1;
+      }
+
+      .app-footer {
+        align-items: center;
+        background-color: var(--color-neutral-9);
+        color: var(--color-neutral-2);
+        gap: var(--spacing-5);
+        margin-block-start: auto;
+        padding-block: var(--spacing-5);
+        padding-inline: var(--spacing-4);
+      }
+
+      .app-header {
+        align-items: baseline;
+        background-color: var(--color-neutral-9);
+        color: var(--color-neutral-0);
+        display: flex;
+        gap: var(--spacing-6);
+        min-block-size: var(--sizing-8);
+        padding-block: var(--spacing-3);
+      }
+
+      .app-nav-link {
+        border-bottom-color: transparent;
+        border-bottom-style: solid;
+        border-bottom-width: var(--border-width-2);
+        color: inherit;
+        font-family: var(--font-family-serif);
+        font-size: var(--font-size-2);
+        padding-bottom: 1px;
+        text-decoration: none;
+        transition: border-bottom-color var(--transition-duration-2);
+      }
+
+      .app-nav-link:hover,
+      .app-nav-link-active {
+        border-bottom-color: var(--color-primary-1-3);
+      }
+
+      .app-nav-link-home {
+        border-bottom-width: var(--border-width-3);
+        font-size: var(--font-size-4);
+        font-weight: var(--font-weight-2);
+        padding-bottom: var(--spacing-0);
+      }
+
+      .app-shell {
+        height: 100%;
+      }
+
+      .copyright-statement {
+        font-size: var(--font-size-1);
+      }
+
+      .credit-list {
+        font-size: var(--font-size-1);
+        text-align: center;
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  .app-content {
-    background-color: var(--color-neutral-0);
-    flex-grow: 1;
-  }
-
-  .app-footer {
-    background-color: var(--color-neutral-9);
-    color: var(--color-neutral-2);
-    margin-block-start: auto;
-    padding-block: var(--spacing-5);
-    padding-inline: var(--spacing-4);
-    text-align: center;
-  }
-
-  .app-header {
-    align-items: baseline;
-    background-color: var(--color-neutral-9);
-    color: var(--color-neutral-0);
-    display: flex;
-    gap: var(--spacing-6);
-    min-block-size: var(--sizing-8);
-    padding-block: var(--spacing-3);
-  }
-
-  .app-nav-link {
-    border-bottom-color: transparent;
-    border-bottom-style: solid;
-    border-bottom-width: var(--border-width-2);
-    color: inherit;
-    font-family: var(--font-family-serif);
-    font-size: var(--font-size-2);
-    padding-bottom: 1px;
-    text-decoration: none;
-    transition: border-bottom-color var(--transition-duration-2);
-  }
-
-  .app-nav-link:hover,
-  .app-nav-link-active {
-    border-bottom-color: var(--color-primary-1-3);
-  }
-
-  .app-nav-link-home {
-    border-bottom-width: var(--border-width-3);
-    font-size: var(--font-size-4);
-    font-weight: var(--font-weight-2);
-    padding-bottom: var(--spacing-0);
-  }
-
-  .app-shell {
-    height: 100%;
-  }
-
-  .copyright-statement {
-    font-size: var(--font-size-1);
-  }
-</style>

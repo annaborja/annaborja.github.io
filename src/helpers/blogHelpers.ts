@@ -13,7 +13,10 @@ export interface BlogPostFrontmatter {
 const blogPostModifierNameMap = new Map([["PlayStation 4", "PS4"]]);
 
 export const blogPostModifierTagSet = new Set(["PlayStation 4"]);
-export const blogPostSeriesTagSet = new Set(["What I’m Playing"]);
+export const blogPostSeriesTagSet = new Set([
+  "Game Design Breakdown",
+  "What I’m Playing",
+]);
 
 export function formatBlogPostDate(frontmatter: BlogPostFrontmatter): string {
   return dayjs.utc(frontmatter.posted_on).format("MMMM D, YYYY");
