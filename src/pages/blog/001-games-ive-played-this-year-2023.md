@@ -5,10 +5,12 @@ tags: ["video games"]
 title: "Games I’ve Played this Year (2023)"
 ---
 
-- Action-Adventure: Assassin's Creed Origins
-- Third-person shooter: Gears of War
-- Platformer: Psychonauts 2
-
-- RPG: Persona 5 Royal
-- First-person shooter: Doom
-- Adventure: The Walking Dead
+- The Walking Dead: The Complete First Season
+- The Walking Dead: Season Two
+- Doom (2016)
+- Fallout: New Vegas
+- Mass Effect (Legendary Edition)
+- Mass Effect 2 (Legendary Edition)
+- God of War (2018)
+- Titanfall 2
+- Star Wars Jedi: Fallen Order
