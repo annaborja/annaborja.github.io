@@ -11,10 +11,7 @@ const projectLinkDimension = "var(--sizing-12)";
 ---
 
 <AppLayout>
-  <HeroBanner
-    patternSrc="url('/images/global/hero-patterns/floating-cogs.svg')"
-    subtitle="Technical Game Designer"
-  />
+  <HeroBanner subtitle="Game Designer" />
 
   <div
     class="content-container-outer flexbox-vertical with-responsive-padding-inline"
@@ -22,10 +19,8 @@ const projectLinkDimension = "var(--sizing-12)";
     <div class="content-container-inner flexbox-vertical">
       <p class="text">
         Hello! My name’s Anna. I’m a video game designer based in the Bay Area,
-        California. I’m passionate about making games that use
-        <span class="text-emphasis">compelling mechanics</span> to tell <span
-          class="text-emphasis">unexpected</span
-        > or <span class="text-emphasis">emotionally resonant stories</span>.
+        California. I’m passionate about making games that use compelling
+        mechanics to tell unexpected or emotionally resonant stories.
       </p>
 
       <p class="text">
@@ -35,6 +30,33 @@ const projectLinkDimension = "var(--sizing-12)";
         animation. I enjoy communicating and collaborating with engineers as
         well as with artists and other designers.
       </p>
+    </div>
+
+    <div class="content-container-inner flexbox-vertical">
+      <h1 class="heading">Skills</h1>
+
+      <ul class="skills-list list-without-bullets">
+        <li>
+          <span class="skills-list-category">Software</span>
+
+          <ul class="skills-sublist flexbox-vertical">
+            <li>Unreal Engine 5</li>
+            <li>Maya</li>
+          </ul>
+        </li>
+
+        <li>
+          <span class="skills-list-category">Programming Languages</span>
+
+          <ul class="skills-sublist flexbox-vertical">
+            <li>C++</li>
+            <li>Unreal Engine Blueprint</li>
+            <li>JavaScript / TypeScript</li>
+            <li>HTML / CSS</li>
+            <li>SQL</li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
     <div class="content-container-inner flexbox-vertical">
@@ -110,24 +132,24 @@ const projectLinkDimension = "var(--sizing-12)";
       justify-content: center;
     }
 
+    .skills-list {
+      gap: var(--spacing-6);
+    }
+
+    .skills-list-category {
+      display: block;
+      font-size: var(--font-size-3);
+      font-weight: var(--font-weight-2);
+      margin-block-end: var(--spacing-1);
+    }
+
+    .skills-sublist {
+      gap: var(--spacing-1);
+    }
+
     .text {
-      font-size: var(--font-size-4);
-      font-weight: var(--font-weight-0);
+      font-size: var(--font-size-3);
       line-height: 1.6;
-    }
-
-    .text-emphasis {
-      border-bottom-color: var(--color-colorful-1);
-      border-bottom-style: solid;
-      border-bottom-width: var(--border-width-4);
-    }
-
-    .text-emphasis:nth-of-type(3n + 2) {
-      border-bottom-color: var(--color-colorful-2);
-    }
-
-    .text-emphasis:nth-of-type(3n + 3) {
-      border-bottom-color: var(--color-colorful-3);
     }
 
     .text-link {
