@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import type { ProjectFrontmatter } from "./projectHelpers";
 
 dayjs.extend(utc);
 
@@ -18,7 +19,7 @@ export const blogPostSeriesTagSet = new Set([
   "What I’m Playing",
 ]);
 
-export function formatBlogPostDate(frontmatter: BlogPostFrontmatter): string {
+export function formatBlogPostDate(frontmatter: ProjectFrontmatter): string {
   return dayjs.utc(frontmatter.posted_on).format("MMMM D, YYYY");
 }
 

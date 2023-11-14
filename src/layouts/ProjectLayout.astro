@@ -2,6 +2,7 @@
 import AppLayout from "./AppLayout.astro";
 import type { ProjectFrontmatter } from "../helpers/projectHelpers";
 import HeroBanner from "../components/HeroBanner.astro";
+import { formatBlogPostDate } from "../helpers/blogHelpers";
 
 const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 ---
@@ -9,17 +10,25 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 <AppLayout title={frontmatter.title}>
   <HeroBanner
     patternSrc="url('/images/global/hero-patterns/graph-paper.svg')"
-    subtitle="Projects"
+    subtitle={frontmatter.posted_on ? "Blog" : "Projects"}
   />
 
   <div
     class="content-container-outer flexbox-vertical with-responsive-padding-inline"
   >
-    <div class="content-container-inner">
+    <div class="content-container-inner project-post">
       <h1>{frontmatter.title}</h1>
 
       <div class="subtitle">
-        {frontmatter.year} • {frontmatter.genre}
+        {!!frontmatter.posted_on && formatBlogPostDate(frontmatter)}
+
+        {
+          !!frontmatter.year && (
+            <>
+              {frontmatter.year} • {frontmatter.blurb}
+            </>
+          )
+        }
       </div>
 
       <slot />
@@ -28,30 +37,30 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 </AppLayout>
 
 <style>
-  /* :global(.content-container-inner h2) {
+  :global(.project-post h2) {
     margin-block-end: var(--spacing-4);
     margin-block-start: var(--spacing-7);
   }
 
-  :global(.content-container-inner h3) {
+  :global(.project-post h3) {
     margin-block-end: var(--spacing-4);
     margin-block-start: var(--spacing-6);
   }
 
-  :global(.content-container-inner h4) {
+  :global(.project-post h4) {
     margin-block-end: var(--spacing-3);
     margin-block-start: var(--spacing-5);
   }
 
-  :global(.content-container-inner p) {
+  :global(.project-post p) {
     margin-block-end: var(--spacing-5);
   }
 
-  :global(.content-container-inner ul) {
+  :global(.project-post ul) {
     margin-block-end: var(--spacing-5);
   }
 
-  :global(.content-container-inner .note) {
+  :global(.project-post .note) {
     background-color: var(--color-neutral-1);
     border-color: var(--color-neutral-5);
     border-radius: var(--border-radius-1);
@@ -63,11 +72,11 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
     padding: var(--spacing-4);
   }
 
-  :global(.content-container-inner .note > *) {
+  :global(.project-post .note > *) {
     margin-block: 0;
   }
 
-  :global(.content-container-inner .tile-list) {
+  :global(.project-post .tile-list) {
     flex-direction: row;
     flex-wrap: wrap;
     gap: var(--spacing-5);
@@ -75,15 +84,15 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
     margin-block: var(--spacing-6);
   }
 
-  :global(.content-container-inner .tile-list *) {
+  :global(.project-post .tile-list *) {
     margin-block: 0;
   }
 
-  :global(.content-container-inner .tile-list p) {
+  :global(.project-post .tile-list p) {
     font-size: var(--font-size-1);
   }
 
-  :global(.content-container-inner .tile-list > li) {
+  :global(.project-post .tile-list > li) {
     border-color: var(--color-neutral-5);
     border-radius: var(--border-radius-1);
     border-style: solid;
@@ -92,22 +101,22 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
     padding: var(--spacing-4);
   }
 
-  :global(.content-container-inner .tile-list-large > li) {
+  :global(.project-post .tile-list-large > li) {
     width: 100%;
   }
 
-  :global(.content-container-inner .tile-list-medium > li) {
-    width: var(--sizing-13);
+  :global(.project-post .tile-list-medium > li) {
+    max-width: var(--sizing-13);
+    width: 100%;
   }
 
-  :global(.content-container-inner .tile-list-small > li) {
+  :global(.project-post .tile-list-small > li) {
     width: var(--sizing-12);
-  } */
+  }
 
   .content-container-outer {
     align-items: center;
-    padding-block-end: var(--spacing-7);
-    padding-block-start: var(--spacing-5);
+    padding-block: var(--spacing-7);
   }
 
   .subtitle {
@@ -116,6 +125,10 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
   }
 
   @media (min-width: 768px) {
+    :global(.project-post .tile-list-medium > li) {
+      width: var(--sizing-13);
+    }
+
     .content-container-inner {
       max-inline-size: var(--sizing-17);
     }

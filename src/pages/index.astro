@@ -16,14 +16,14 @@ const projectLinkDimension = "var(--sizing-12)";
   <div
     class="content-container-outer flexbox-vertical with-responsive-padding-inline"
   >
-    <div class="content-container-inner flexbox-vertical">
-      <p class="text">
+    <div class="content-container-inner flexbox-vertical about-section">
+      <p>
         I’m an aspiring video game designer based in California. I have a strong
         technical background that includes five years as a software engineer at
         Netflix.
       </p>
 
-      <p class="text">
+      <p>
         As a game designer, my strengths lie not only in my design sensibilities
         but also in my capacity to learn quickly and overcome technical
         challenges, my ability to write clear documentation, and my experience
@@ -31,7 +31,7 @@ const projectLinkDimension = "var(--sizing-12)";
         non-technical stakeholders.
       </p>
 
-      <p class="text">
+      <p>
         I’m a lifelong lover of video games, from the delightful PC and Game Boy
         games I played as a kid to the incredible AAA and indie titles that are
         coming out today. I enjoy games across a variety of genres, but I
@@ -90,13 +90,17 @@ const projectLinkDimension = "var(--sizing-12)";
   </div>
 
   <style define:vars={{ projectLinkDimension }}>
-    .content-container-inner {
+    .about-section {
       gap: var(--spacing-7);
+    }
+
+    .content-container-inner {
+      gap: var(--spacing-6);
     }
 
     .content-container-outer {
       align-items: center;
-      gap: var(--spacing-9);
+      gap: var(--spacing-8);
       padding-block: var(--spacing-7);
     }
 
@@ -139,7 +143,7 @@ const projectLinkDimension = "var(--sizing-12)";
       justify-content: center;
     }
 
-    .skills-list {
+    ul.skills-list {
       gap: var(--spacing-6);
     }
 
@@ -152,11 +156,6 @@ const projectLinkDimension = "var(--sizing-12)";
 
     .skills-sublist {
       gap: var(--spacing-1);
-    }
-
-    .text {
-      font-size: var(--font-size-3);
-      line-height: 1.6;
     }
 
     .text-link {
