@@ -7,6 +7,14 @@ const projects = (await Astro.glob<ProjectFrontmatter>("./projects/*.mdx"))
   .filter((project) => !project.frontmatter.draft)
   .sort((a, b) => b.file.localeCompare(a.file));
 
+const gameMechanicProjects = projects.filter((project) =>
+  project.frontmatter.tags?.includes("game mechanics")
+);
+
+const levelDesignProjects = projects.filter((project) =>
+  project.frontmatter.tags?.includes("level design")
+);
+
 const projectLinkDimension = "var(--sizing-12)";
 ---
 
@@ -24,19 +32,11 @@ const projectLinkDimension = "var(--sizing-12)";
       </p>
 
       <p>
-        As a game designer, my strengths lie not only in my design sensibilities
-        but also in my capacity to learn quickly and overcome technical
-        challenges, my ability to write clear documentation, and my experience
-        in communicating and working with a wide variety of technical and
-        non-technical stakeholders.
-      </p>
-
-      <p>
-        I’m a lifelong lover of video games, from the delightful PC and Game Boy
-        games I played as a kid to the incredible AAA and indie titles that are
-        coming out today. I enjoy games across a variety of genres, but I
-        particularly appreciate games with strong writing, well-designed
-        mechanics, and a cinematic flair.
+        I play games across a variety of genres, but I particularly like games
+        with strong writing, well-designed mechanics, and a cinematic flair.
+        Some games I’ve enjoyed recently include <i>Titanfall 2</i>, <i
+          >Star Wars Jedi: Fallen Order</i
+        >, <i>Gears of War Ultimate Edition</i>, and <i>Fallout: New Vegas</i>.
       </p>
     </div>
 
@@ -66,106 +66,141 @@ const projectLinkDimension = "var(--sizing-12)";
       </ul>
     </div>
 
-    <div class="content-container-inner flexbox-vertical">
+    <div class="content-container-inner flexbox-vertical projects-section">
       <h1 class="heading">Projects</h1>
 
-      <ul class="list-without-bullets projects-list">
-        {
-          projects.map((project) => (
-            <li>
-              <a class="flexbox-vertical project-link" href={project.url}>
-                <span class="project-link-title">
-                  {project.frontmatter.title}
-                </span>
-
-                <span class="project-link-blurb">
-                  {project.frontmatter.blurb}
-                </span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </div>
-
-  <style define:vars={{ projectLinkDimension }}>
-    .about-section {
-      gap: var(--spacing-7);
-    }
-
-    .content-container-inner {
-      gap: var(--spacing-6);
-    }
-
-    .content-container-outer {
-      align-items: center;
-      gap: var(--spacing-8);
-      padding-block: var(--spacing-7);
-    }
-
-    .heading {
-      text-align: center;
-    }
-
-    .project-link {
-      background-color: var(--color-neutral-1);
-      border-radius: var(--border-radius-1);
-      color: var(--color-neutral-9);
-      height: var(--projectLinkDimension);
-      justify-content: space-between;
-      padding: var(--spacing-4);
-      text-decoration: none;
-      transition: background-color var(--transition-duration-3);
-      width: var(--projectLinkDimension);
-    }
-
-    .project-link:hover {
-      background-color: var(--color-neutral-2);
-    }
-
-    .project-link-blurb {
-      font-size: var(--font-size-2);
-    }
-
-    .project-link-label {
-      font-weight: var(--font-weight-2);
-    }
-
-    .project-link-title {
-      font-size: var(--font-size-5);
-    }
-
-    .projects-list {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: var(--spacing-7);
-      justify-content: center;
-    }
-
-    ul.skills-list {
-      gap: var(--spacing-6);
-    }
-
-    .skills-list-category {
-      display: block;
-      font-size: var(--font-size-3);
-      font-weight: var(--font-weight-2);
-      margin-block-end: var(--spacing-1);
-    }
-
-    .skills-sublist {
-      gap: var(--spacing-1);
-    }
-
-    .text-link {
-      font-weight: var(--font-weight-1);
-    }
-
-    @media (min-width: 768px) {
-      .content-container-inner {
-        max-inline-size: var(--sizing-16);
+      {
+        gameMechanicProjects.length > 0 && (
+          <ul class="list-without-bullets projects-list">
+            {gameMechanicProjects.map((project) => (
+              <li>
+                <a class="flexbox-vertical project-link" href={project.url}>
+                  <span class="project-link-title">
+                    {project.frontmatter.title}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
       }
-    }
-  </style>
+
+      {
+        levelDesignProjects.length > 0 && (
+          <div>
+            <h2 class="project-category">Level Design</h2>
+
+            <ul class="list-without-bullets projects-list">
+              {levelDesignProjects.map((project) => (
+                <li>
+                  <a class="flexbox-vertical project-link" href={project.url}>
+                    <span class="project-link-title">
+                      {project.frontmatter.title}
+                    </span>
+
+                    <span class="project-link-blurb">
+                      {project.frontmatter.blurb}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+
+    <style define:vars={{ projectLinkDimension }}>
+      .about-section {
+        gap: var(--spacing-7);
+      }
+
+      .content-container-inner {
+        gap: var(--spacing-6);
+      }
+
+      .content-container-outer {
+        align-items: center;
+        gap: var(--spacing-8);
+        padding-block: var(--spacing-7);
+      }
+
+      .heading {
+        text-align: center;
+      }
+
+      .project-category {
+        font-weight: var(--font-weight-1);
+        font-size: var(--font-size-5);
+        margin-block-end: var(--spacing-5);
+        text-align: center;
+      }
+
+      .project-link {
+        background-color: var(--color-neutral-1);
+        border-radius: var(--border-radius-1);
+        color: var(--color-neutral-9);
+        height: var(--projectLinkDimension);
+        justify-content: space-between;
+        padding: var(--spacing-4);
+        text-decoration: none;
+        transition: background-color var(--transition-duration-3);
+        width: var(--projectLinkDimension);
+      }
+
+      .project-link:hover {
+        background-color: var(--color-neutral-2);
+      }
+
+      .project-link-blurb {
+        font-size: var(--font-size-2);
+      }
+
+      .project-link-label {
+        font-weight: var(--font-weight-2);
+      }
+
+      .project-link-title {
+        font-size: var(--font-size-5);
+        font-weight: var(--font-weight-2);
+      }
+
+      .projects-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--spacing-5);
+        justify-content: center;
+      }
+
+      .content-container-inner.projects-section {
+        gap: var(--spacing-7);
+        max-inline-size: var(--sizing-17);
+      }
+
+      ul.skills-list {
+        gap: var(--spacing-6);
+      }
+
+      .skills-list-category {
+        display: block;
+        font-size: var(--font-size-3);
+        font-weight: var(--font-weight-2);
+        margin-block-end: var(--spacing-1);
+      }
+
+      .skills-sublist {
+        gap: var(--spacing-1);
+      }
+
+      .text-link {
+        font-weight: var(--font-weight-1);
+      }
+
+      @media (min-width: 768px) {
+        .content-container-inner {
+          max-inline-size: var(--sizing-16);
+        }
+      }
+    </style>
+  </div>
 </AppLayout>

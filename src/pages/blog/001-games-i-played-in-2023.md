@@ -5,26 +5,38 @@ tags: ["game analysis"]
 title: "Games I Played in 2023"
 ---
 
-## _Persona 5 Royal_
+## Action
 
-## _The Walking Dead: The Complete First Season_
+### _Street Fighter 6_
 
-## _The Walking Dead: Season Two_
+## Action-Adventure
 
-## _Doom (2016)_
+### _God of War_ (2018)
 
-## _Fallout: New Vegas_
+### _Star Wars Jedi: Fallen Order_
 
-## _Mass Effect (Legendary Edition)_
+### _Uncharted: Drake’s Fortune_ (_The Nathan Drake Collection_)
 
-## _Mass Effect 2 (Legendary Edition)_
+## Adventure
 
-## _God of War (2018)_
+### _The Walking Dead: The Complete First Season_
 
-## _Titanfall 2_
+### _The Walking Dead: Season Two_
 
-## _Star Wars Jedi: Fallen Order_
+## RPG
 
-## _Gears of War Ultimate Edition_
+### _Fallout: New Vegas_
 
-## _Injustice: Gods Among Us_
+### _Persona 5 Royal_
+
+### _Mass Effect_ (_Legendary Edition_)
+
+### _Mass Effect 2_ (_Legendary Edition_)
+
+## Shooter
+
+### _Doom_ (2016)
+
+### _Gears of War Ultimate Edition_
+
+### _Titanfall 2_

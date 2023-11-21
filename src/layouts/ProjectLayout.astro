@@ -25,7 +25,8 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
         {
           !!frontmatter.year && (
             <>
-              {frontmatter.year} • {frontmatter.blurb}
+              {frontmatter.year}{" "}
+              {!!frontmatter.blurb && <>• {frontmatter.blurb}</>}
             </>
           )
         }
@@ -120,7 +121,7 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
   }
 
   .subtitle {
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-3);
     margin-block-end: var(--spacing-6);
   }
 

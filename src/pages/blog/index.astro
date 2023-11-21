@@ -39,7 +39,9 @@ const title = "Blog";
     subtitle={title}
   />
 
-  <div class="content-container with-responsive-padding-inline">
+  <div
+    class="content-container flexbox-vertical with-responsive-padding-inline"
+  >
     {
       combatDesignPosts.length > 0 && (
         <div class="section">
@@ -144,6 +146,7 @@ const title = "Blog";
 
 <style>
   .content-container {
+    gap: var(--spacing-7);
     padding-block: var(--spacing-7);
     text-align: center;
   }
