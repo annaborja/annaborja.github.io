@@ -19,18 +19,21 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
     <div class="content-container-inner project-post">
       <h1>{frontmatter.title}</h1>
 
-      <div class="subtitle">
-        {!!frontmatter.posted_on && formatBlogPostDate(frontmatter)}
+      {
+        !!frontmatter.posted_on ||
+          (!!frontmatter.year && (
+            <div class="subtitle">
+              {!!frontmatter.posted_on && formatBlogPostDate(frontmatter)}
 
-        {
-          !!frontmatter.year && (
-            <>
-              {frontmatter.year}{" "}
-              {!!frontmatter.blurb && <>• {frontmatter.blurb}</>}
-            </>
-          )
-        }
-      </div>
+              {!!frontmatter.year && (
+                <>
+                  {frontmatter.year}{" "}
+                  {!!frontmatter.blurb && <>• {frontmatter.blurb}</>}
+                </>
+              )}
+            </div>
+          ))
+      }
 
       <slot />
     </div>
@@ -75,6 +78,10 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 
   :global(.project-post .note > *) {
     margin-block: 0;
+  }
+
+  :global(.project-post .note h1) {
+    font-size: var(--font-size-3);
   }
 
   :global(.project-post .tile-list) {

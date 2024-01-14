@@ -7,14 +7,6 @@ const projects = (await Astro.glob<ProjectFrontmatter>("./projects/*.mdx"))
   .filter((project) => !project.frontmatter.draft)
   .sort((a, b) => b.file.localeCompare(a.file));
 
-const gameMechanicProjects = projects.filter((project) =>
-  project.frontmatter.tags?.includes("game mechanics")
-);
-
-const levelDesignProjects = projects.filter((project) =>
-  project.frontmatter.tags?.includes("level design")
-);
-
 const projectLinkDimension = "var(--sizing-12)";
 ---
 
@@ -26,17 +18,21 @@ const projectLinkDimension = "var(--sizing-12)";
   >
     <div class="content-container-inner flexbox-vertical about-section">
       <p>
-        I’m an aspiring video game designer based in California. I have a strong
-        technical background that includes five years as a software engineer at
-        Netflix.
+        I’m an aspiring video game designer with a strong technical background
+        that includes five years as a senior software engineer at Netflix.
       </p>
 
       <p>
-        I play games across a variety of genres, but I particularly love games
-        with strong writing, well-designed mechanics, and a cinematic flair.
-        Some games I’ve enjoyed recently include <i>Titanfall 2</i>, <i
-          >Star Wars Jedi: Fallen Order</i
-        >, <i>Gears of War Ultimate Edition</i>, and <i>Fallout: New Vegas</i>.
+        I’m passionately interested in all areas of game design, from systems
+        and level design to combat and narrative design. My strengths lie in my
+        technical problem-solving skills and in my experience in working and
+        communicating with stakeholders from a variety of backgrounds.
+      </p>
+
+      <p>
+        I play games across a variety of genres, but I particularly enjoy
+        action-adventure games and shooters with strong writing, well-designed
+        mechanics, and a cinematic flair.
       </p>
     </div>
 
@@ -58,8 +54,8 @@ const projectLinkDimension = "var(--sizing-12)";
 
           <ul class="skills-sublist flexbox-vertical">
             <li>C++</li>
-            <li>Unreal Engine Blueprint</li>
-            <li>JavaScript / TypeScript</li>
+            <li>Blueprint (Unreal Engine)</li>
+            <li>JavaScript</li>
             <li>SQL</li>
           </ul>
         </li>
@@ -70,42 +66,22 @@ const projectLinkDimension = "var(--sizing-12)";
       <h1 class="heading">Projects</h1>
 
       {
-        gameMechanicProjects.length > 0 && (
+        projects.length > 0 && (
           <ul class="list-without-bullets projects-list">
-            {gameMechanicProjects.map((project) => (
+            {projects.map((project) => (
               <li>
                 <a class="flexbox-vertical project-link" href={project.url}>
                   <span class="project-link-title">
                     {project.frontmatter.title}
                   </span>
+
+                  <span class="project-link-blurb">
+                    {project.frontmatter.blurb}
+                  </span>
                 </a>
               </li>
             ))}
           </ul>
-        )
-      }
-
-      {
-        levelDesignProjects.length > 0 && (
-          <div>
-            <h2 class="project-category">Level Design</h2>
-
-            <ul class="list-without-bullets projects-list">
-              {levelDesignProjects.map((project) => (
-                <li>
-                  <a class="flexbox-vertical project-link" href={project.url}>
-                    <span class="project-link-title">
-                      {project.frontmatter.title}
-                    </span>
-
-                    <span class="project-link-blurb">
-                      {project.frontmatter.blurb}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
         )
       }
     </div>
