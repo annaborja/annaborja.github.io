@@ -1,8 +1,8 @@
 ---
-blurb: "A sci-fi FPS prototype"
+blurb: "Built with Unreal Engine 5"
 draft: false
 layout: ../../layouts/ProjectLayout.astro
-title: "Fight for Perseus Station"
+title: "First-Person Shooter Prototype"
 ---
 
 <div class="flexbox-vertical note">
@@ -10,5 +10,67 @@ title: "Fight for Perseus Station"
   
   - Unreal Engine Gameplay Ability System (GAS)
   - Unreal Engine Common UI
-  - Behavior trees for enemy and ally AI
+  - Behavior trees for enemy and companion AI
 </div>
+
+<div class="flexbox-vertical note">
+  # Asset Credits
+
+  To speed up development and allow myself to focus on design and coding, I utilized premade assets from these sources:
+  
+  - TODO
+</div>
+
+## Overview
+
+Inspired by the story-driven campaigns of games like _Titanfall 2_ and _Uncharted_, the weapon systems of games like _Halo_ and _Call of Duty_, and the companion mechanics of games like _Mass Effect_ and _Gears of War_, I created this project to practice the design and implementation of various interconnecting game systems and mechanics.
+
+## Controls
+
+Using Unreal Engine 5’s Enhanced Input system, I implemented the game’s controls for both gamepads and mouse/keyboard.
+
+In designing this control scheme, my goal was to support a **wide variety of actions** while keeping the controls as **simple and intuitive** as possible. Tap/hold triggers allow a single button to support multiple actions in a way that is, hopefully, easy for the player to remember and execute. For accessibility purposes, the hold time threshold for these controls could be made customizable by the player.
+
+### Gamepad Controls
+
+<img src="/images/projects/fps-prototype/controls-gamepad.png" width="700" />
+
+### Mouse/Keyboard Controls
+
+| Input | Action |
+| -------- | ------- |
+| **W/A/S/D** | Walk/Run |
+| **Shift** | Sprint |
+| **Mouse-X/Y** | Adjust Camera |
+| **X** | Melee Attack |
+| **Spacebar** | Jump |
+| **C** | Crouch |
+| **E** | Interact |
+| **R (tap)** | Reload |
+| **R (hold)** | Open Special Ability Wheel |
+| **Escape** | Pause Game |
+
+| Input | Action |
+| -------- | ------- |
+| **RMB** | Aim Down Sights |
+| **RMB + F** | Aim Grenade |
+| **Command** | Special Ability |
+| **LMB** | Fire Weapon/Throw Grenade |
+| **1** | Switch to Squad Member 1 |
+| **2** | Switch to Squad Member 2 |
+| **3** | Primary Weapon |
+| **4** | Secondary Weapon |
+| **5 (tap)** | Quick Info |
+| **5 (hold)** | Switch Camera Mode |
+
+## Camera System
+
+### First-Person
+
+### Third-Person (Over-the-Shoulder)
+
+## Movement Mechanics
+
+### Walk/Run
+
+### Sprint

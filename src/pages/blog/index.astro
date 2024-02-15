@@ -10,26 +10,6 @@ const allPosts = (await Astro.glob<BlogPostFrontmatter>("./*.md")).filter(
   (post) => !post.frontmatter.draft
 );
 
-const combatDesignPosts = allPosts.filter((post) =>
-  post.frontmatter.tags?.includes("combat design")
-);
-
-const gameAnalysisPosts = allPosts.filter((post) =>
-  post.frontmatter.tags?.includes("game analysis")
-);
-
-const gameMechanicPosts = allPosts.filter((post) =>
-  post.frontmatter.tags?.includes("game mechanics")
-);
-
-const levelDesignPosts = allPosts.filter((post) =>
-  post.frontmatter.tags?.includes("level design")
-);
-
-const questDesignPosts = allPosts.filter((post) =>
-  post.frontmatter.tags?.includes("quest design")
-);
-
 const title = "Blog";
 ---
 
@@ -43,102 +23,20 @@ const title = "Blog";
     class="content-container flexbox-vertical with-responsive-padding-inline"
   >
     {
-      combatDesignPosts.length > 0 && (
-        <div class="section">
-          <h1 class="heading">Combat Design</h1>
-
-          <ul class="list-without-bullets posts-list">
-            {combatDesignPosts
-              .sort((a, b) => b.file.localeCompare(a.file))
-              .map((post) => (
-                <li>
-                  <a class="text-link" href={post.url}>
-                    {getBlogPostFullTitle(post.frontmatter)}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </div>
-      )
-    }
-
-    {
-      gameAnalysisPosts.length > 0 && (
-        <div class="section">
-          <h1 class="heading">Game Analysis</h1>
-
-          <ul class="list-without-bullets posts-list">
-            {gameAnalysisPosts
-              .sort((a, b) => b.file.localeCompare(a.file))
-              .map((post) => (
-                <li>
-                  <a class="text-link" href={post.url}>
-                    {getBlogPostFullTitle(post.frontmatter)}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </div>
-      )
-    }
-
-    {
-      gameMechanicPosts.length > 0 && (
-        <div class="section">
-          <h1 class="heading">Game Mechanics</h1>
-
-          <ul class="list-without-bullets posts-list">
-            {gameMechanicPosts
-              .sort((a, b) => b.file.localeCompare(a.file))
-              .map((post) => (
-                <li>
-                  <a class="text-link" href={post.url}>
-                    {getBlogPostFullTitle(post.frontmatter)}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </div>
-      )
-    }
-
-    {
-      levelDesignPosts.length > 0 && (
-        <div class="section">
-          <h1 class="heading">Level Design</h1>
-
-          <ul class="list-without-bullets posts-list">
-            {levelDesignPosts
-              .sort((a, b) => b.file.localeCompare(a.file))
-              .map((post) => (
-                <li>
-                  <a class="text-link" href={post.url}>
-                    {getBlogPostFullTitle(post.frontmatter)}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </div>
-      )
-    }
-
-    {
-      questDesignPosts.length > 0 && (
-        <div class="section">
-          <h1 class="heading">Quest Design</h1>
-
-          <ul class="list-without-bullets posts-list">
-            {questDesignPosts
-              .sort((a, b) => b.file.localeCompare(a.file))
-              .map((post) => (
-                <li>
-                  <a class="text-link" href={post.url}>
-                    {getBlogPostFullTitle(post.frontmatter)}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </div>
+      allPosts.length > 0 ? (
+        <ul class="list-without-bullets posts-list">
+          {allPosts
+            .sort((a, b) => b.file.localeCompare(a.file))
+            .map((post) => (
+              <li>
+                <a class="text-link" href={post.url}>
+                  {getBlogPostFullTitle(post.frontmatter)}
+                </a>
+              </li>
+            ))}
+        </ul>
+      ) : (
+        <p class="empty-message">Coming soon!</p>
       )
     }
   </div>
@@ -149,6 +47,10 @@ const title = "Blog";
     gap: var(--spacing-7);
     padding-block: var(--spacing-7);
     text-align: center;
+  }
+
+  .empty-message {
+    font-size: var(--font-size-4);
   }
 
   .heading {

@@ -1,8 +1,9 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
-posted_on: 2023-11-13
-tags: ["game analysis"]
-title: "Games I Played in 2023"
+draft: true
+posted_on: 2024-02-14
+tags: ["finding the fun"]
+title: "Finding the Fun: "
 ---
 
 ## Action
