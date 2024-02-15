@@ -41,16 +41,16 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 </AppLayout>
 
 <style>
+  :global(.yt-iframe) {
+    margin-block-end: var(--spacing-5);
+  }
+
   :global(table) {
     border: 1px solid var(--color-neutral-9);
     border-collapse: collapse;
     display: inline-block;
     font-size: var(--font-size-1);
     table-layout: fixed;
-  }
-
-  :global(table + table) {
-    margin-inline-start: var(--spacing-6);
   }
 
   :global(thead) {
@@ -67,6 +67,12 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 
   :global(img) {
     margin-block-end: var(--spacing-5);
+  }
+
+  :global(.tables-container) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-6);
   }
 
   :global(.project-post h2) {

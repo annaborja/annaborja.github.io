@@ -13,6 +13,8 @@ title: "First-Person Shooter Prototype"
   - Behavior trees for enemy and companion AI
 </div>
 
+[VIDEO TODO]
+
 <div class="flexbox-vertical note">
   # Asset Credits
 
@@ -27,15 +29,17 @@ Inspired by the story-driven campaigns of games like _Titanfall 2_ and _Uncharte
 
 ## Controls
 
-Using Unreal Engine 5’s Enhanced Input system, I implemented the game’s controls for both gamepads and mouse/keyboard.
+Using Unreal Engine 5’s **Enhanced Input** system, I implemented the game’s controls for both gamepads and mouse/keyboard.
 
 In designing this control scheme, my goal was to support a **wide variety of actions** while keeping the controls as **simple and intuitive** as possible. Tap/hold triggers allow a single button to support multiple actions in a way that is, hopefully, easy for the player to remember and execute. For accessibility purposes, the hold time threshold for these controls could be made customizable by the player.
 
 ### Gamepad Controls
 
-<img src="/images/projects/fps-prototype/controls-gamepad.png" width="700" />
+<img alt="A diagram of a video game control scheme overlaid on top of a photo of an Xbox controller" src="/images/projects/fps-prototype/controls-gamepad.png" width="700" />
 
 ### Mouse/Keyboard Controls
+
+<div class="tables-container">
 
 | Input | Action |
 | -------- | ------- |
@@ -63,14 +67,23 @@ In designing this control scheme, my goal was to support a **wide variety of act
 | **5 (tap)** | Quick Info |
 | **5 (hold)** | Switch Camera Mode |
 
-## Camera System
+</div>
 
-### First-Person
+## Camera
 
-### Third-Person (Over-the-Shoulder)
+Although the game is designed to be an FPS, I wanted to practice working with different camera systems, so I implemented a camera that can switch between **first-person and third-person (over-the-shoulder) modes**.
 
-## Movement Mechanics
+[VIDEO TODO]
 
-### Walk/Run
+To simultaneously support first-person and third-person perspectives, I used a separate first-person (“arms only”) and third-person skeletal mesh for each playable character. I shared animations between these meshes by creating an **IK Retargeter** for each mesh in Unreal Engine and retargeting animations between meshes.
 
-### Sprint
+<img alt="A screenshot of an IK Retargeter in Unreal Engine showcasing two different skeletal meshes arranged in similar T-poses." src="/images/projects/fps-prototype/ik-retargeting.png" width="700" />
+
+## Sprint Ability
+
+I implemented sprinting using Unreal Engine’s **Gameplay Ability System (GAS)**. This allowed me to easily integrate cost and cooldown capabilities to build out a stamina regeneration mechanic.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/kXXaiM-HnN8?si=DCpwGBlKH47MJQLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<img alt="An animated GIF of a video game stamina bar emptying and refilling" src="/images/projects/fps-prototype/stamina-bar.gif" />
+
