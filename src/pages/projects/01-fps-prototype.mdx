@@ -39,7 +39,7 @@ In designing this control scheme, my goal was to support a **wide variety of act
 
 ### Mouse/Keyboard Controls
 
-<div class="tables-container">
+<div class="flexbox-horizontal flexbox-horizontal-blocks">
 
 | Input | Action |
 | -------- | ------- |
@@ -73,17 +73,72 @@ In designing this control scheme, my goal was to support a **wide variety of act
 
 Although the game is designed to be an FPS, I wanted to practice working with different camera systems, so I implemented a camera that can switch between **first-person and third-person (over-the-shoulder) modes**.
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/vuDTP0blgtA?si=jrElcXxS3jBrVRyH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-To simultaneously support first-person and third-person perspectives, I used a separate first-person (“arms only”) and third-person skeletal mesh for each playable character. I shared animations between these meshes by creating an **IK Retargeter** for each mesh in Unreal Engine and retargeting animations between meshes.
+To support multiple camera perspectives, I used a separate first-person (“arms only”) and third-person skeletal mesh for each playable character. I shared animations between these meshes by creating an **IK Retargeter** for each unique skeleton in Unreal Engine and retargeting animations between them.
 
 <img alt="A screenshot of an IK Retargeter in Unreal Engine showcasing two different skeletal meshes arranged in similar T-poses." src="/images/projects/fps-prototype/ik-retargeting.png" width="700" />
 
-## Sprint Ability
+I used a variety of techniques and tools inside an **Animation Blueprint** to implement smooth animation transitions for each skeleton, including animation state machines, blended poses, Blend Spaces, and Aim Offsets.
 
-I implemented sprinting using Unreal Engine’s **Gameplay Ability System (GAS)**. This allowed me to easily integrate cost and cooldown capabilities to build out a stamina regeneration mechanic.
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/s_AA11w8exg?si=jrfXnS-YDM5iM6sg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<div class="flexbox-horizontal flexbox-horizontal-blocks">
+  <img alt="A screenshot of an Animation Blueprint inside Unreal Engine" class="flex-grow-1" src="/images/projects/fps-prototype/animation-blueprint-1.png" width="400" />
+
+  <img alt="A screenshot of an Animation Blueprint inside Unreal Engine" class="flex-grow-1" src="/images/projects/fps-prototype/animation-blueprint-2.png" width="400" />
+</div>
+
+## Gameplay Abilities
+
+Most significant actions in the game are implemented using Unreal Engine’s **Gameplay Ability System (GAS)**. Using GAS allowed me to not only tap into a robust system of activation, blocking, and cancellation capabilities, but to do so in a clean and organized way.
+
+### Sprinting
+
+I integrated GAS cost and cooldown capabilities with sprinting to build a **stamina regeneration** mechanic. The amount of stamina a character has, how quickly it is depleted by actions like sprinting, and the rate at which it regenerates can all be configured through gameplay attributes.
+
+A character’s base walking speed and max sprint speed can also be configured through gameplay attributes. This allows for designing a variety of enemies and companions with different movement speeds based on their innate stats.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/kXXaiM-HnN8?si=DCpwGBlKH47MJQLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <img alt="An animated GIF of a video game stamina bar emptying and refilling" src="/images/projects/fps-prototype/stamina-bar.gif" />
 
+### Aim Down Sights (ADS)
+
+When aiming down sights, the player’s crosshair gets tighter to indicate higher shooting accuracy. The camera smoothly interpolates to a narrower field of view, and the player’s camera speed slows down to facilitate more accurate targeting.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/MhAoixCCYHE?si=oXEdrlvFWA40kYkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### Reloading
+
+When a character reloads, a reloading Animation Montage is played. The montage’s underlying Animation Sequence triggers various cosmetic effects like sound cues (SFX) and particle systems (VFX). As the montage finishes, a set of ammo-related gameplay attributes is calculated and updated, which is immediately reflected in the player’s HUD.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/KYejliLJBoc?si=FAI47keQAIxPihMZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<img alt="An animated GIF of a video game HUD element tracking ammo as a weapon is fired and reloaded" src="/images/projects/fps-prototype/ammo-display.gif" />
+
+### Weapon Switching
+
+In this game, each character can carry two weapons at a time. When switching weapons, a section of an Animation Montage is played based on the weapon types the character is transitioning between (one-handed weapon to two-handed weapon or vice versa).
+
+The underlying Animation Sequence triggers various SFX and VFX and also notifies when each weapon’s mesh should be attached to a particular socket on the character’s skeletal mesh (e.g., hand versus holster).
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/R6N3tvu3WyU?si=_Bc6MmhMgyFgjWj5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### Character Switching
+
+In this prototype, I wanted to be able to immediately play with a variety of character types and weapons, so I implemented a system in which **every companion is also a playable character**.
+
+When the player switches between characters, the screen briefly fades to white and a Sound Cue plays to indicate the transition. Under the hood, C++ code executes teardown logic on the departing character to prepare it for AI control (switching from a first-person mesh to a third-person mesh, starting Behavior Tree logic, etc.). Conversely, setup logic is executed on the incoming character to prep it for player control.
+
+[VIDEO TODO]
+
+## Shooting
+
+## Scripting
+
+## Level Design
+
+## Enemy AI
+
+## UI

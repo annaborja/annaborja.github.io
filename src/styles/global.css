@@ -41,6 +41,19 @@ h6 {
   font-size: var(--font-size-2);
 }
 
+.flexbox-horizontal {
+  display: flex;
+}
+
+.flexbox-horizontal-blocks {
+  flex-wrap: wrap;
+  gap: var(--spacing-6);
+}
+
+.flexbox-horizontal-blocks > * {
+  margin: 0;
+}
+
 .flexbox-vertical {
   display: flex;
   flex-direction: column;
@@ -48,6 +61,10 @@ h6 {
 
 .flexbox-vertical-paragraphs {
   gap: var(--spacing-5);
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
 }
 
 .list-without-bullets {
