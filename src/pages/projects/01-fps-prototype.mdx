@@ -111,7 +111,7 @@ When aiming down sights, the player’s crosshair gets tighter to indicate highe
 
 ### Reloading
 
-When a character reloads, a reloading Animation Montage is played. The montage’s underlying Animation Sequence triggers various cosmetic effects like sound cues (SFX) and particle systems (VFX). As the montage finishes, a set of ammo-related gameplay attributes is calculated and updated, which is immediately reflected in the player’s HUD.
+When a character reloads, a reloading Animation Montage is played. The montage’s underlying Animation Sequence triggers cosmetic effects like sound cues (SFX) and particle systems (VFX). As the montage finishes, a set of ammo-related gameplay attributes is calculated and updated, which is immediately reflected in the player’s HUD.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/KYejliLJBoc?si=FAI47keQAIxPihMZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -123,22 +123,100 @@ In this game, each character can carry two weapons at a time. When switching wea
 
 The underlying Animation Sequence triggers various SFX and VFX and also notifies when each weapon’s mesh should be attached to a particular socket on the character’s skeletal mesh (e.g., hand versus holster).
 
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/R6N3tvu3WyU?si=_Bc6MmhMgyFgjWj5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[VIDEO TODO]
 
 ### Character Switching
 
 In this prototype, I wanted to be able to immediately play with a variety of character types and weapons, so I implemented a system in which **every companion is also a playable character**.
 
-When the player switches between characters, the screen briefly fades to white and a Sound Cue plays to indicate the transition. Under the hood, C++ code executes teardown logic on the departing character to prepare it for AI control (switching from a first-person mesh to a third-person mesh, starting Behavior Tree logic, etc.). Conversely, setup logic is executed on the incoming character to prep it for player control.
+When the player switches between characters, the screen briefly fades to white and a Sound Cue plays to indicate the transition. Under the hood, C++ code executes teardown logic on the departing character to prepare it for AI control (switching from a first-person mesh to a third-person mesh, starting Behavior Tree logic, etc.). Similarly, setup logic is executed on the incoming character to prep it for player control.
 
 [VIDEO TODO]
 
+### Melee Attacks
+
+During a melee attack, an Animation Montage is played, which triggers a **Notify State** that creates and then eventually destroys a **hitbox**. Hostile characters that overlap with this hitbox play a hit reaction animation and are dealt damage.
+
+[VIDEO TODO]
+
+Since shooting is the primary form of combat in this prototype, the melee system is very simple. In a more complex melee combat system, unique attacks could be designed to use hitboxes of different sizes, shapes, placements, and quantities. Systems like soft locking could also be implemented using **motion warping** to aid the player’s accuracy.
+
 ## Shooting
+
+The three types of guns in this prototype—pistols, assault rifles, and shotguns—are implemented as **hitscan** weapons.
+
+Shooting is implemented as a GAS **gameplay ability**. The ability code performs various line traces and calculations to execute each shot alongside triggering relevant animations, SFX, VFX, hit reactions, and damage gameplay effects. It utilizes GAS costs to consume weapon ammo and GAS cooldowns to enforce a maximum rate of fire.
+
+### Spread
+
+To implement spread, a bullet’s trajectory is **randomized within a cone originating from the gun’s muzzle**. The cone’s diameter could be calculated using gameplay attributes and other flags, such as whether the character is running or standing still. This would allow for combat variability based on weapon stats, character stats, and player behaviors.
+
+[VIDEO TODO]
+
+Weapons like shotguns can be configured to fire multiple projectiles at once.
+
+[VIDEO TODO]
+
+### Recoil
+
+After firing a weapon, **viewkick** is temporarily added to the viewport to simulate recoil. The direction and severity at which viewkick affects the camera’s pitch and yaw—as well as the rate of viewkick recovery (**centerspeed**)—could be configured for each unique weapon, allowing for a variety of differentiated weapon designs.
+
+[VIDEO TODO]
+
+### Aim Assist
+
+To assist the player’s targeting accuracy, the camera movement speed slows down slightly when the player’s reticle is near or on top of a hostile target.
+
+[VIDEO TODO]
 
 ## Scripting
 
-## Level Design
+I implemented a system that would allow me to trigger scripted events and behaviors within a level in a data-driven way.
+
+**NPC barks** can be triggered, which utilize **Dialogue Waves** to play audio (in this prototype, placeholder audio is used in lieu of recorded dialogue). Subtitles are displayed in the HUD for accessibility. Barks can trigger other barks, allowing NPCs to respond to each other.
+
+[VIDEO TODO]
+
+**Mission objectives and tutorials** can be triggered and displayed in the HUD.
+
+[VIDEO TODO]
+
+Scripted behaviors for NPCs can be triggered, such as gesture animations and targeted movement.
+
+[VIDEO TODO]
+
+## Companion AI
+
+Companion logic is implemented in a **Behavior Tree**.
+
+Companions can be targeted at a particular location, encouraging the player to follow them.
+
+[VIDEO TODO]
+
+When not in combat and not targeted at a location, companions will generally follow the player.
+
+[VIDEO TODO]
+
+To avoid impeding the player’s movement, companions will move out of the way if the player bumps into them. This behavior uses **Environment Query System (EQS)** queries to find a reasonable nearby location for the NPC to go.
+
+[VIDEO TODO]
+
+**Nav Link Proxies** are used to bridge separated areas within the level’s **Navigation Mesh**. Companions will use these links to follow the player, performing relevant movements like opening doors and mantling onto objects along the way.
+
+[VIDEO TODO]
 
 ## Enemy AI
+
+Enemy logic is implemented in a **Behavior Tree**.
+
+Enemies not engaged in combat can be posted at a particular location or walk along a patrol route.
+
+[VIDEO TODO]
+
+Through an **AI Perception Component**, enemies can detect when the player is nearby. When the player first enters an enemy’s sight line, the enemy turns toward the player and plays an audio bark to indicate that the player has been spotted. If other enemies are nearby, they will also be alerted to the player’s presence (this is accomplished through an **instance synced Blackboard key** that is shared across related enemies).
+
+[VIDEO TODO]
+
+## Level Design
 
 ## UI
