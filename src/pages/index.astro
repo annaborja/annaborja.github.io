@@ -18,48 +18,51 @@ const projectLinkDimension = "var(--sizing-12)";
   >
     <div class="content-container-inner flexbox-vertical about-section">
       <p>
-        I’m an aspiring video game designer with a strong technical background
-        that includes five years as a senior software engineer at Netflix.
+        I’m an aspiring video game designer with a technical background that
+        includes five years as a senior software engineer at Netflix.
       </p>
 
       <p>
-        I’m passionately interested in all areas of game design, from systems
-        and level design to combat and narrative design. My strengths lie in my
-        technical problem-solving skills and in my experience in working and
-        communicating with stakeholders from a variety of backgrounds.
+        While I’ve had rewarding experiences in the tech industry, I’m
+        passionate about creative pursuits, and I’m endlessly inspired by how
+        games can bridge so many art forms—from writing and cinematography to
+        music and sound design—and tie them together through engaging mechanics
+        and gameplay loops.
       </p>
 
       <p>
-        I play games across a variety of genres, but I particularly enjoy
-        action-adventure games and shooters with strong writing, meaningful
-        player choices, and a cinematic flair.
+        I’m hoping to bring my technical skills, my focus, and my drive to a
+        team that’s passionate about making excellent games that resonate with
+        players. My favorite types of games tend to be action-adventure games
+        and shooters with strong writing, meaningful player choices, and a
+        cinematic flair.
       </p>
     </div>
 
     <div class="content-container-inner flexbox-vertical">
       <h1 class="heading">Skills</h1>
 
-      <ul class="skills-list list-without-bullets">
-        <li>
-          <span class="skills-list-category">Software</span>
+      <div class="skills-list">
+        <div>
+          <p class="skills-list-category">Software</p>
 
           <ul class="skills-sublist flexbox-vertical">
             <li>Unreal Engine 5</li>
             <li>Maya</li>
+            <li>Photoshop</li>
           </ul>
-        </li>
+        </div>
 
-        <li>
-          <span class="skills-list-category">Programming Languages</span>
+        <div>
+          <p class="skills-list-category">Programming Languages</p>
 
           <ul class="skills-sublist flexbox-vertical">
             <li>C++</li>
             <li>Blueprint (Unreal Engine)</li>
             <li>JavaScript</li>
-            <li>SQL</li>
           </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
 
     <div class="content-container-inner flexbox-vertical projects-section">
@@ -153,12 +156,15 @@ const projectLinkDimension = "var(--sizing-12)";
         max-inline-size: var(--sizing-17);
       }
 
-      ul.skills-list {
-        gap: var(--spacing-6);
+      .skills-list {
+        align-items: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-6) var(--spacing-10);
+        justify-content: center;
       }
 
       .skills-list-category {
-        display: block;
         font-size: var(--font-size-3);
         font-weight: var(--font-weight-2);
         margin-block-end: var(--spacing-1);

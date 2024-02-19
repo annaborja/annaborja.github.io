@@ -20,7 +20,11 @@ title: "First-Person Shooter Prototype"
 
   To speed up development and allow myself to focus on design and coding, I utilized premade assets from these sources:
   
-  - TODO
+  - **Static models:** <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/product/polygon-megapolis-city-pack" target="_blank">POLY - Megapolis City Pack</a> by Animpic Studio
+  - **Character models:** <a class="text-link" href="https://www.mixamo.com/#/" target="_blank">Mixamo</a>, Unreal Engine template projects
+  - **Animations:** <a class="text-link" href="https://www.mixamo.com/#/" target="_blank">Mixamo</a>, <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/item/3319a35b40444bb69022d96f375b83de" target="_blank">Mobility Basic</a> / <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/item/4ae8e3175c094904be9ec2cea04ccb8c" target="_blank">Boxing</a> / <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/item/2de28b7ceeb846d8bd417e2e6d7fcb22" target="_blank">Pistol Basic</a> / <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/item/111a3cf0b5bf429eb0c83d7d99c3b2b5" target="_blank">Rifle Basic</a> / <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/item/cbe760bcc55d4936b663c2bab7d090ae" target="_blank">Death</a> MoCap Packs by MoCap Online
+  - **SFX:** <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/item/f6f88552c30e42b3a7ceeb2c638c66fa" target="_blank">Pro Sound Collection</a> by Gamemaster Audio, <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/item/a1819d9abdbc4d9d801b44fcff7394ff" target="_blank">Sci Fi Guns Sounds Pack</a> by Daydream Sound
+  - **VFX:** <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/item/edea928b71974a3f8b8f08829b49b3aa" target="_blank">VFX Pack - Stylized FPS Muzzle and Impacts Effects</a> by BlueSlothVFX
 </div>
 
 ## Overview
@@ -29,9 +33,9 @@ Inspired by the story-driven campaigns of games like _Titanfall 2_ and _Uncharte
 
 ## Controls
 
-Using Unreal Engine 5’s **Enhanced Input** system, I implemented the game’s controls for both gamepads and mouse/keyboard.
+Using Unreal Engine’s **Enhanced Input** system, the game’s controls are implemented for both gamepads and mouse/keyboard.
 
-In designing this control scheme, my goal was to support a **wide variety of actions** while keeping the controls as **simple and intuitive** as possible. Tap/hold triggers allow a single button to support multiple actions in a way that is, hopefully, easy for the player to remember and execute. For accessibility purposes, the hold time threshold for these controls could be made customizable by the player.
+In designing this control scheme, my goal was to support a **wide variety of actions** while keeping the controls as **simple and intuitive** as possible. Tap/hold triggers allow a single button to support multiple actions in a way that’s intended to be easy for the player to remember and execute. For accessibility purposes, the hold time threshold for these controls could be made customizable by the player.
 
 ### Gamepad Controls
 
@@ -75,11 +79,11 @@ Although the game is designed to be an FPS, I wanted to practice working with di
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/vuDTP0blgtA?si=jrElcXxS3jBrVRyH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-To support multiple camera perspectives, I used a separate first-person (“arms only”) and third-person skeletal mesh for each playable character. I shared animations between these meshes by creating an **IK Retargeter** for each unique skeleton in Unreal Engine and retargeting animations between them.
+To support multiple camera perspectives, I used separate first-person (“arms only”) and third-person skeletal meshes for each playable character. I shared animations between these meshes by creating an **IK Retargeter** for each unique skeleton in Unreal Engine and retargeting animations between them.
 
 <img alt="A screenshot of an IK Retargeter in Unreal Engine showcasing two different skeletal meshes arranged in similar T-poses." src="/images/projects/fps-prototype/ik-retargeting.png" width="700" />
 
-I used a variety of techniques and tools inside an **Animation Blueprint** to implement smooth animation transitions for each skeleton, including animation state machines, blended poses, Blend Spaces, and Aim Offsets.
+I used a variety of techniques inside an **Animation Blueprint** to implement smooth animation transitions for each skeleton, including animation state machines, blended poses, Blend Spaces, and Aim Offsets.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/s_AA11w8exg?si=jrfXnS-YDM5iM6sg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -95,7 +99,7 @@ Most significant actions in the game are implemented using Unreal Engine’s **G
 
 ### Sprinting
 
-I integrated GAS cost and cooldown capabilities with sprinting to build a **stamina regeneration** mechanic. The amount of stamina a character has, how quickly it is depleted by actions like sprinting, and the rate at which it regenerates can all be configured through gameplay attributes.
+I integrated GAS cost and cooldown capabilities with sprinting to build a **stamina regeneration** mechanic. The amount of stamina a character has, how quickly it is depleted by actions like sprinting, and the rate at which it regenerates can all be configured through **gameplay attributes**.
 
 A character’s base walking speed and max sprint speed can also be configured through gameplay attributes. This allows for designing a variety of enemies and companions with different movement speeds based on their innate stats.
 
@@ -105,13 +109,13 @@ A character’s base walking speed and max sprint speed can also be configured t
 
 ### Aim Down Sights (ADS)
 
-When aiming down sights, the player’s crosshair gets tighter to indicate higher shooting accuracy. The camera smoothly interpolates to a narrower field of view, and the player’s camera speed slows down to facilitate more accurate targeting.
+When aiming down sights, the player’s crosshair gets tighter to indicate reduced bullet spread. The camera smoothly interpolates to a narrower field of view, and the player’s camera speed slows down to facilitate more accurate targeting.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/MhAoixCCYHE?si=oXEdrlvFWA40kYkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Reloading
 
-When a character reloads, a reloading Animation Montage is played. The montage’s underlying Animation Sequence triggers cosmetic effects like sound cues (SFX) and particle systems (VFX). As the montage finishes, a set of ammo-related gameplay attributes is calculated and updated, which is immediately reflected in the player’s HUD.
+When a character reloads, a reloading Animation Montage is played. The underlying Animation Sequence triggers cosmetic effects like sound cues (SFX) and particle systems (VFX). As the montage finishes, a set of ammo-related **gameplay attributes** is calculated and updated, which is immediately reflected in the player’s HUD.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/KYejliLJBoc?si=FAI47keQAIxPihMZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -119,19 +123,21 @@ When a character reloads, a reloading Animation Montage is played. The montage�
 
 ### Weapon Switching
 
-In this game, each character can carry two weapons at a time. When switching weapons, a section of an Animation Montage is played based on the weapon types the character is transitioning between (one-handed weapon to two-handed weapon or vice versa).
+Each character can carry two weapons at a time. When switching weapons, a section of an Animation Montage is played based on the weapon types the character is transitioning between (one-handed to two-handed weapon or vice versa).
 
-The underlying Animation Sequence triggers various SFX and VFX and also notifies when each weapon’s mesh should be attached to a particular socket on the character’s skeletal mesh (e.g., hand versus holster).
+The underlying Animation Sequence triggers various SFX cues and also notifies when each weapon’s mesh should be attached to a particular socket on the character’s skeletal mesh (e.g., hand versus holster).
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/C0sPY62bEMQ?si=PA17Y_CVtRNfXSv7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Character Switching
 
-In this prototype, I wanted to be able to immediately play with a variety of character types and weapons, so I implemented a system in which **every companion is also a playable character**.
+In this prototype, I wanted to be able to play with a variety of character types and weapons, so I implemented a system in which **every companion is also a playable character**.
 
 When the player switches between characters, the screen briefly fades to white and a Sound Cue plays to indicate the transition. Under the hood, C++ code executes teardown logic on the departing character to prepare it for AI control (switching from a first-person mesh to a third-person mesh, starting Behavior Tree logic, etc.). Similarly, setup logic is executed on the incoming character to prep it for player control.
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/EPM5ToOgwuY?si=0uZM1Pk5JHfHXpgc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/0OQCuxjuklA?si=Qb_m_Hx92DDq6zrg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Melee Attacks
 
@@ -177,11 +183,15 @@ I implemented a system that would allow me to trigger scripted events and behavi
 
 [VIDEO TODO]
 
+Scripted behaviors for NPCs can be triggered, such as gesture animations and targeted movement.
+
+[VIDEO TODO]
+
 **Mission objectives and tutorials** can be triggered and displayed in the HUD.
 
 [VIDEO TODO]
 
-Scripted behaviors for NPCs can be triggered, such as gesture animations and targeted movement.
+Temporary player view targets can be triggered (wherein the player is prompted to press a button to pan the camera in a certain direction and gain visual context on their objective).
 
 [VIDEO TODO]
 
@@ -217,6 +227,30 @@ Through an **AI Perception Component**, enemies can detect when the player is ne
 
 [VIDEO TODO]
 
+Basic enemy combat behavior is implemented using **Environment Query System (EQS)** queries. Enemies attack the nearest player or companion while maintaining a minimum distance and preferring to attack from behind cover. Enemies will also switch between weapons depending on their distance from their target.
+
+[VIDEO TODO]
+
 ## Level Design
 
+This prototype doesn’t contain a complete level, but I did implement some simple level design in the form of a tutorial level. I attempted to integrate scripted events, verticality, and affordances and signifiers to make the level objectives interesting and clear.
+
+[VIDEO TODO]
+
 ## UI
+
+The persistent HUD displays several key pieces of information related to the player’s vital stats, squad, weapons, and special abilities. These UI components dynamically update as the relevant stats and information change.
+
+[PIC TODO]
+
+Thanks to Unreal Engine’s **Common UI** plugin, the game’s UI can dynamically support gamepad and mouse/keyboard icons depending on what type of controller the player is using.
+
+[VIDEO TODO]
+
+The game’s main menu supports three levels of tabbing. Under the hood, it utilizes Common UI widgets like tab lists, carousels, and activatable widget switchers.
+
+[VIDEO TODO]
+
+The HUD can display temporary UI components like notifications, input prompts, and info displays. Under the hood, these components use fade animations and C++ timers to display information at the right time.
+
+[PICS TODO]
