@@ -141,17 +141,23 @@ When the player switches between characters, the screen briefly fades to white a
 
 ### Melee Attacks
 
-During a melee attack, an Animation Montage is played, which triggers a **Notify State** that creates and then eventually destroys a **hitbox**. Hostile characters that overlap with this hitbox play a hit reaction animation and are dealt damage.
+During a melee attack, an Animation Montage is played, which triggers a Notify State that creates and then destroys a **hitbox**. Hostile characters that overlap with this hitbox play a hit reaction animation and are dealt damage.
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/UXpClSRNHYI?si=VSewBn8DtX6nJqRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-Since shooting is the primary form of combat in this prototype, the melee system is very simple. In a more complex melee combat system, unique attacks could be designed to use hitboxes of different sizes, shapes, placements, and quantities. Systems like soft locking could also be implemented using **motion warping** to aid the player’s accuracy.
+Since shooting is the main form of combat in this prototype, I kept the melee system simple. In a more complex melee combat system, unique attacks could be designed to use hitboxes of different sizes, shapes, and placements. Systems like soft locking could also be implemented using **motion warping** to aid the player’s accuracy.
+
+### Special Abilities
+
+Although they aren’t fully fleshed out yet, I implemented a few different special abilities as a proof of concept. Special abilities can add **variety and depth** to combat by giving the player options other than just shooting.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/d6ZEroUDTY4?si=qUMLQHRtnq90VODU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Shooting
 
 The three types of guns in this prototype—pistols, assault rifles, and shotguns—are implemented as **hitscan** weapons.
 
-Shooting is implemented as a GAS **gameplay ability**. The ability code performs various line traces and calculations to execute each shot alongside triggering relevant animations, SFX, VFX, hit reactions, and damage gameplay effects. It utilizes GAS costs to consume weapon ammo and GAS cooldowns to enforce a maximum rate of fire.
+Shooting is implemented as a GAS **gameplay ability**. The ability code performs various line traces and calculations to execute each shot along with triggering relevant animations, SFX, VFX, hit reactions, and damage gameplay effects. It utilizes GAS costs to consume weapon ammo and GAS cooldowns to enforce a maximum rate of fire.
 
 ### Spread
 
