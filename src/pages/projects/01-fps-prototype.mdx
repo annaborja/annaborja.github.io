@@ -101,8 +101,6 @@ Most significant actions in the game are implemented using Unreal Engine’s **G
 
 I integrated GAS cost and cooldown capabilities with sprinting to build a **stamina regeneration** mechanic. The amount of stamina a character has, how quickly it is depleted by actions like sprinting, and the rate at which it regenerates can all be configured through **gameplay attributes**.
 
-A character’s base walking speed and max sprint speed can also be configured through gameplay attributes. This allows for designing a variety of enemies and companions with different movement speeds based on their innate stats.
-
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/kXXaiM-HnN8?si=DCpwGBlKH47MJQLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <img alt="An animated GIF of a video game stamina bar emptying and refilling" src="/images/projects/fps-prototype/stamina-bar.gif" />
@@ -124,8 +122,6 @@ When a character reloads, a reloading Animation Montage is played. The underlyin
 ### Weapon Switching
 
 Each character can carry two weapons at a time. When switching weapons, a section of an Animation Montage is played based on the weapon types the character is transitioning between (one-handed to two-handed weapon or vice versa).
-
-The underlying Animation Sequence triggers various SFX cues and also notifies when each weapon’s mesh should be attached to a particular socket on the character’s skeletal mesh (e.g., hand versus holster).
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/C0sPY62bEMQ?si=PA17Y_CVtRNfXSv7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -163,43 +159,51 @@ Shooting is implemented as a GAS **gameplay ability**. The ability code performs
 
 To implement spread, a bullet’s trajectory is **randomized within a cone originating from the gun’s muzzle**. The cone’s diameter could be calculated using gameplay attributes and other flags, such as whether the character is running or standing still. This would allow for combat variability based on weapon stats, character stats, and player behaviors.
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/901ZnP6ThOo?si=1N8pu6mvnlg6aDi-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Weapons like shotguns can be configured to fire multiple projectiles at once.
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/7GSXEUZaGKk?si=UAJ1poWcnYWlD4IY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Recoil
 
 After firing a weapon, **viewkick** is temporarily added to the viewport to simulate recoil. The direction and severity at which viewkick affects the camera’s pitch and yaw—as well as the rate of viewkick recovery (**centerspeed**)—could be configured for each unique weapon, allowing for a variety of differentiated weapon designs.
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/xfok9wym4Wc?si=K159YaAeZSz_L5R7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Aim Assist
 
 To assist the player’s targeting accuracy, the camera movement speed slows down slightly when the player’s reticle is near or on top of a hostile target.
 
-[VIDEO TODO]
-
 ## Scripting
 
-I implemented a system that would allow me to trigger scripted events and behaviors within a level in a data-driven way.
+I implemented a system that allows me to trigger scripted events within a level in a data-driven way.
+
+<img alt="A screenshot of an Unreal Engine Data Table filled with scripted events" class="flex-grow-1" src="/images/projects/fps-prototype/scripting-data-table.png" />
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/7qFSqtya-90?si=qbDhqvzfr5bLSQfr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **NPC barks** can be triggered, which utilize **Dialogue Waves** to play audio (in this prototype, placeholder audio is used in lieu of recorded dialogue). Subtitles are displayed in the HUD for accessibility. Barks can trigger other barks, allowing NPCs to respond to each other.
 
-[VIDEO TODO]
+<img alt="An animated GIF of video game dialogue subtitles" src="/images/projects/fps-prototype/barks-1.gif" />
 
 Scripted behaviors for NPCs can be triggered, such as gesture animations and targeted movement.
 
-[VIDEO TODO]
+<div class="flexbox-horizontal flexbox-horizontal-blocks">
+  <img alt="An animated GIF of a video game character turning and pointing in the distance" src="/images/projects/fps-prototype/scripted-turn.gif" />
+
+  <img alt="An animated GIF of a video game character nodding" src="/images/projects/fps-prototype/scripted-nod.gif" />
+</div>
 
 **Mission objectives and tutorials** can be triggered and displayed in the HUD.
 
-[VIDEO TODO]
+<img alt="An animated GIF of a video game tutorial notification being shown and then hidden" src="/images/projects/fps-prototype/scripted-tutorial.gif" />
+
+<img alt="An animated GIF of a video game mission objective notification being shown and then hidden" src="/images/projects/fps-prototype/scripted-objective.gif" />
 
 Temporary player view targets can be triggered (wherein the player is prompted to press a button to pan the camera in a certain direction and gain visual context on their objective).
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/CGZlfKYYqhI?si=hNpzgo2Xz8y13jDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Companion AI
 
