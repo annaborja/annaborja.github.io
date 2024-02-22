@@ -2,6 +2,7 @@
 blurb: "Built with Unreal Engine 5"
 draft: false
 layout: ../../layouts/ProjectLayout.astro
+image: /images/projects/fps-prototype/cover.png
 title: "First-Person Shooter Prototype"
 ---
 
@@ -211,19 +212,17 @@ Companion logic is implemented in a **Behavior Tree**.
 
 Companions can be targeted at a particular location, encouraging the player to follow them.
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/zb8uyFebxm0?si=lwLWdDweA780DcgF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 When not in combat and not targeted at a location, companions will generally follow the player.
 
-[VIDEO TODO]
+**Nav Link Proxies** are used to bridge separated areas within the level’s **Navigation Mesh**. Companions will use these links to follow the player, performing relevant movements like opening doors and mantling onto objects along the way.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/EZPZP2ngfJ4?si=tBUMk8BQXRZ_nfns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 To avoid impeding the player’s movement, companions will move out of the way if the player bumps into them. This behavior uses **Environment Query System (EQS)** queries to find a reasonable nearby location for the NPC to go.
 
-[VIDEO TODO]
-
-**Nav Link Proxies** are used to bridge separated areas within the level’s **Navigation Mesh**. Companions will use these links to follow the player, performing relevant movements like opening doors and mantling onto objects along the way.
-
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/as1_ba3wwaM?si=eLCEgWn5NF-Bqw4T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Enemy AI
 
@@ -231,21 +230,13 @@ Enemy logic is implemented in a **Behavior Tree**.
 
 Enemies not engaged in combat can be posted at a particular location or walk along a patrol route.
 
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/neZsZaLwJV4?si=bv-NkS6qhiBp4xEd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Through an **AI Perception Component**, enemies can detect when the player is nearby. When the player first enters an enemy’s sight line, the enemy turns toward the player and plays an audio bark to indicate that the player has been spotted. If other enemies are nearby, they will also be alerted to the player’s presence (this is accomplished through an **instance synced Blackboard key** that is shared across related enemies).
 
-[VIDEO TODO]
-
 Basic enemy combat behavior is implemented using **Environment Query System (EQS)** queries. Enemies attack the nearest player or companion while maintaining a minimum distance and preferring to attack from behind cover. Enemies will also switch between weapons depending on their distance from their target.
 
-[VIDEO TODO]
-
-## Level Design
-
-This prototype doesn’t contain a complete level, but I did implement some simple level design in the form of a tutorial level. I attempted to integrate scripted events, verticality, and affordances and signifiers to make the level objectives interesting and clear.
-
-[VIDEO TODO]
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/R_Aed4SPZTA?si=Hvz8XZlvJLOVhs-J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## UI
 
