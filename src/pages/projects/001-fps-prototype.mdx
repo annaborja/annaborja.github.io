@@ -14,7 +14,11 @@ title: "First-Person Shooter Prototype"
   - Behavior trees for enemy and companion AI
 </div>
 
-[VIDEO TODO]
+<iframe class="yt-iframe" style="margin-inline: auto;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/SuVT0bhSQhw?si=vxlEnOEnDr3XjZDW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Overview
+
+Inspired by the story-driven campaigns of games like _Titanfall 2_ and _Uncharted_, the weapon systems of games like _Halo_ and _Call of Duty_, and the companion mechanics of games like _Mass Effect_ and _Gears of War_, I created this project to practice the design and implementation of various interconnecting game systems and mechanics.
 
 <div class="flexbox-vertical note">
   # Asset Credits
@@ -28,15 +32,9 @@ title: "First-Person Shooter Prototype"
   - **VFX:** <a class="text-link" href="https://www.unrealengine.com/marketplace/en-US/item/edea928b71974a3f8b8f08829b49b3aa" target="_blank">VFX Pack - Stylized FPS Muzzle and Impacts Effects</a> by BlueSlothVFX
 </div>
 
-## Overview
-
-Inspired by the story-driven campaigns of games like _Titanfall 2_ and _Uncharted_, the weapon systems of games like _Halo_ and _Call of Duty_, and the companion mechanics of games like _Mass Effect_ and _Gears of War_, I created this project to practice the design and implementation of various interconnecting game systems and mechanics.
-
 ## Controls
 
-Using Unreal Engine’s **Enhanced Input** system, the game’s controls are implemented for both gamepads and mouse/keyboard.
-
-In designing this control scheme, my goal was to support a **wide variety of actions** while keeping the controls as **simple and intuitive** as possible. Tap/hold triggers allow a single button to support multiple actions in a way that’s intended to be easy for the player to remember and execute. For accessibility purposes, the hold time threshold for these controls could be made customizable by the player.
+Using Unreal Engine’s **Enhanced Input** system, the game’s controls are implemented for both gamepads and mouse/keyboard. In designing this control scheme, my goal was to support a wide variety of actions while keeping the controls as simple and intuitive as possible.
 
 ### Gamepad Controls
 
@@ -80,7 +78,7 @@ Although the game is designed to be an FPS, I wanted to practice working with di
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/vuDTP0blgtA?si=jrElcXxS3jBrVRyH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-To support multiple camera perspectives, I used separate first-person (“arms only”) and third-person skeletal meshes for each playable character. I shared animations between these meshes by creating an **IK Retargeter** for each unique skeleton in Unreal Engine and retargeting animations between them.
+To support multiple camera perspectives, I used separate first-person and third-person skeletal meshes for each playable character. I shared animations between these meshes by creating an **IK Retargeter** for each unique skeleton in Unreal Engine and retargeting animations between them.
 
 <img alt="A screenshot of an IK Retargeter in Unreal Engine showcasing two different skeletal meshes arranged in similar T-poses." src="/images/projects/fps-prototype/ik-retargeting.png" width="700" />
 
@@ -88,19 +86,13 @@ I used a variety of techniques inside an **Animation Blueprint** to implement sm
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/s_AA11w8exg?si=jrfXnS-YDM5iM6sg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<div class="flexbox-horizontal flexbox-horizontal-blocks">
-  <img alt="A screenshot of an Animation Blueprint inside Unreal Engine" class="flex-grow-1" src="/images/projects/fps-prototype/animation-blueprint-1.png" width="400" />
-
-  <img alt="A screenshot of an Animation Blueprint inside Unreal Engine" class="flex-grow-1" src="/images/projects/fps-prototype/animation-blueprint-2.png" width="400" />
-</div>
-
 ## Gameplay Abilities
 
 Most significant actions in the game are implemented using Unreal Engine’s **Gameplay Ability System (GAS)**. Using GAS allowed me to not only tap into a robust system of activation, blocking, and cancellation capabilities, but to do so in a clean and organized way.
 
 ### Sprinting
 
-I integrated GAS cost and cooldown capabilities with sprinting to build a **stamina regeneration** mechanic. The amount of stamina a character has, how quickly it is depleted by actions like sprinting, and the rate at which it regenerates can all be configured through **gameplay attributes**.
+I integrated GAS cost and cooldown capabilities with sprinting to build a **stamina regeneration** mechanic. The amount of stamina a character has, how quickly it is depleted by actions like sprinting, and the rate at which it regenerates can all be configured through gameplay attributes.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/kXXaiM-HnN8?si=DCpwGBlKH47MJQLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
