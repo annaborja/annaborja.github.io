@@ -7,14 +7,14 @@ title: "First-Person Shooter Prototype"
 ---
 
 <div class="flexbox-vertical note">
-  A first-person shooter prototype featuring a variety of playable characters, weapons, and abilities. Built from scratch in Unreal Engine 5 using C++ and Blueprints along with:
+  An FPS prototype featuring a variety of playable characters, weapons, and abilities. Built from scratch in Unreal Engine 5 using C++ and Blueprints along with:
   
   - Unreal Engine Gameplay Ability System (GAS)
   - Unreal Engine Common UI
   - Behavior trees for enemy and companion AI
 </div>
 
-<iframe class="yt-iframe" style="margin-inline: auto;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/SuVT0bhSQhw?si=vxlEnOEnDr3XjZDW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe class="yt-iframe" style="margin-inline: auto;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/i0AaqkF6NJ0?si=2UE3BDXdsuDN5Lm4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Overview
 
@@ -82,9 +82,69 @@ To support multiple camera perspectives, I used separate first-person and third-
 
 <img alt="A screenshot of an IK Retargeter in Unreal Engine showcasing two different skeletal meshes arranged in similar T-poses." src="/images/projects/fps-prototype/ik-retargeting.png" width="700" />
 
-I used a variety of techniques inside an **Animation Blueprint** to implement smooth animation transitions for each skeleton, including animation state machines, blended poses, Blend Spaces, and Aim Offsets.
+## Scripting
 
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/s_AA11w8exg?si=jrfXnS-YDM5iM6sg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+I built a system that allows me to trigger scripted events within a level in a data-driven way.
+
+<img alt="A screenshot of an Unreal Engine Data Table filled with scripted events" class="flex-grow-1" src="/images/projects/fps-prototype/scripting-data-table.png" />
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/7qFSqtya-90?si=qbDhqvzfr5bLSQfr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**NPC barks** can be triggered, which utilize Dialogue Waves to play audio (in this prototype, placeholder audio is used in lieu of recorded dialogue). Barks can trigger other barks, allowing NPCs to respond to each other.
+
+<img alt="An animated GIF of video game dialogue subtitles" src="/images/projects/fps-prototype/barks-1.gif" />
+
+Scripted behaviors for NPCs can be triggered, such as gesture animations and targeted movement.
+
+<div class="flexbox-horizontal flexbox-horizontal-blocks" style="margin-block-end: var(--spacing-6);">
+  <img alt="An animated GIF of a video game character turning and pointing in the distance" src="/images/projects/fps-prototype/scripted-turn.gif" />
+
+  <img alt="An animated GIF of a video game character nodding" src="/images/projects/fps-prototype/scripted-nod.gif" />
+</div>
+
+**Mission objectives and tutorials** can be triggered and displayed in the HUD.
+
+<img alt="An animated GIF of a video game tutorial notification being shown and then hidden" src="/images/projects/fps-prototype/scripted-tutorial.gif" />
+
+<img alt="An animated GIF of a video game mission objective notification being shown and then hidden" src="/images/projects/fps-prototype/scripted-objective.gif" />
+
+Temporary player view targets can be triggered, which prompt the player to press a button to pan the camera in a certain direction and gain visual context on their objective.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/CGZlfKYYqhI?si=hNpzgo2Xz8y13jDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Companion AI
+
+Companion logic is implemented in a **Behavior Tree**.
+
+Companions can be targeted at a particular location, encouraging the player to follow them.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/zb8uyFebxm0?si=lwLWdDweA780DcgF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+When not in combat and not targeted at a location, companions will generally follow the player.
+
+**Nav Link Proxies** are used to bridge separated areas within the level’s **Navigation Mesh**. Companions will use these links to follow the player, performing relevant movements like opening doors and mantling onto objects along the way.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/EZPZP2ngfJ4?si=tBUMk8BQXRZ_nfns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+To avoid impeding the player’s movement, companions will move out of the way if the player bumps into them. This behavior uses **Environment Query System (EQS)** queries to find a reasonable nearby location for the NPC to go.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/as1_ba3wwaM?si=eLCEgWn5NF-Bqw4T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Enemy AI
+
+Enemy logic is implemented in a **Behavior Tree**.
+
+Enemies not engaged in combat can be posted at a particular location or walk along a patrol route.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/K-clGq3JExc?si=V-KoC0sfKLDl-SlW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+Through an AI Perception Component, enemies can detect when the player is nearby.
+
+When the player first enters an enemy’s sight line, the enemy turns toward the player and plays an audio bark to indicate that the player has been spotted. If other enemies are nearby, they will also be alerted to the player’s presence (this is accomplished through an **instance-synced Blackboard key** that is shared across related enemies).
+
+Enemy combat behavior is implemented using **Environment Query System (EQS)** queries. Enemies attack the nearest player or companion while maintaining a minimum distance and preferring to attack from behind cover. Enemies will also switch between weapons depending on their distance from their target.
+
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/QYul8AI2-ZM?si=JuMRpT8HRGlWHePV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Gameplay Abilities
 
@@ -92,7 +152,7 @@ Most significant actions in the game are implemented using Unreal Engine’s **G
 
 ### Sprinting
 
-I integrated GAS cost and cooldown capabilities with sprinting to build a **stamina regeneration** mechanic. The amount of stamina a character has, how quickly it is depleted by actions like sprinting, and the rate at which it regenerates can all be configured through gameplay attributes.
+I integrated GAS cost and cooldown capabilities with sprinting to build a **stamina regeneration** mechanic. How much stamina a character has, how quickly it is depleted, and the rate at which it regenerates can all be configured through gameplay attributes.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/kXXaiM-HnN8?si=DCpwGBlKH47MJQLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -100,15 +160,15 @@ I integrated GAS cost and cooldown capabilities with sprinting to build a **stam
 
 ### Aim Down Sights (ADS)
 
-When aiming down sights, the player’s crosshair gets tighter to indicate reduced bullet spread. The camera smoothly interpolates to a narrower field of view, and the player’s camera speed slows down to facilitate more accurate targeting.
+When aiming down sights, the player’s crosshair gets tighter to indicate reduced bullet spread. The camera interpolates to a narrower field of view, and the player’s camera speed slows down to facilitate more accurate targeting.
 
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/MhAoixCCYHE?si=oXEdrlvFWA40kYkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/oWuLgmdpbIw?si=6Mrc4nxOx07NAmmn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Reloading
 
-When a character reloads, a reloading Animation Montage is played. The underlying Animation Sequence triggers cosmetic effects like sound cues (SFX) and particle systems (VFX). As the montage finishes, a set of ammo-related **gameplay attributes** is calculated and updated, which is immediately reflected in the player’s HUD.
+When a character reloads, a reloading Animation Montage is played and triggers cosmetic effects like sound cues (SFX) and particle systems (VFX). As the animation finishes, a set of ammo-related gameplay attributes is updated and reflected in the player’s HUD.
 
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/KYejliLJBoc?si=FAI47keQAIxPihMZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/FJxifz-ALZc?si=8pO0F9GpgvFPTBmd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <img alt="An animated GIF of a video game HUD element tracking ammo as a weapon is fired and reloaded" src="/images/projects/fps-prototype/ammo-display.gif" />
 
@@ -122,7 +182,7 @@ Each character can carry two weapons at a time. When switching weapons, a sectio
 
 In this prototype, I wanted to be able to play with a variety of character types and weapons, so I implemented a system in which **every companion is also a playable character**.
 
-When the player switches between characters, the screen briefly fades to white and a Sound Cue plays to indicate the transition. Under the hood, C++ code executes teardown logic on the departing character to prepare it for AI control (switching from a first-person mesh to a third-person mesh, starting Behavior Tree logic, etc.). Similarly, setup logic is executed on the incoming character to prep it for player control.
+When the player switches between characters, C++ code executes teardown logic on the departing character to prepare it for AI control (switching from a first-person mesh to a third-person mesh, starting Behavior Tree logic, etc.). Similarly, setup logic is executed on the incoming character to prep it for player control.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/EPM5ToOgwuY?si=0uZM1Pk5JHfHXpgc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -167,68 +227,6 @@ After firing a weapon, **viewkick** is temporarily added to the viewport to simu
 ### Aim Assist
 
 To assist the player’s targeting accuracy, the camera movement speed slows down slightly when the player’s reticle is near or on top of a hostile target.
-
-## Scripting
-
-I implemented a system that allows me to trigger scripted events within a level in a data-driven way.
-
-<img alt="A screenshot of an Unreal Engine Data Table filled with scripted events" class="flex-grow-1" src="/images/projects/fps-prototype/scripting-data-table.png" />
-
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/7qFSqtya-90?si=qbDhqvzfr5bLSQfr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-**NPC barks** can be triggered, which utilize **Dialogue Waves** to play audio (in this prototype, placeholder audio is used in lieu of recorded dialogue). Subtitles are displayed in the HUD for accessibility. Barks can trigger other barks, allowing NPCs to respond to each other.
-
-<img alt="An animated GIF of video game dialogue subtitles" src="/images/projects/fps-prototype/barks-1.gif" />
-
-Scripted behaviors for NPCs can be triggered, such as gesture animations and targeted movement.
-
-<div class="flexbox-horizontal flexbox-horizontal-blocks">
-  <img alt="An animated GIF of a video game character turning and pointing in the distance" src="/images/projects/fps-prototype/scripted-turn.gif" />
-
-  <img alt="An animated GIF of a video game character nodding" src="/images/projects/fps-prototype/scripted-nod.gif" />
-</div>
-
-**Mission objectives and tutorials** can be triggered and displayed in the HUD.
-
-<img alt="An animated GIF of a video game tutorial notification being shown and then hidden" src="/images/projects/fps-prototype/scripted-tutorial.gif" />
-
-<img alt="An animated GIF of a video game mission objective notification being shown and then hidden" src="/images/projects/fps-prototype/scripted-objective.gif" />
-
-Temporary player view targets can be triggered (wherein the player is prompted to press a button to pan the camera in a certain direction and gain visual context on their objective).
-
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/CGZlfKYYqhI?si=hNpzgo2Xz8y13jDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-## Companion AI
-
-Companion logic is implemented in a **Behavior Tree**.
-
-Companions can be targeted at a particular location, encouraging the player to follow them.
-
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/zb8uyFebxm0?si=lwLWdDweA780DcgF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-When not in combat and not targeted at a location, companions will generally follow the player.
-
-**Nav Link Proxies** are used to bridge separated areas within the level’s **Navigation Mesh**. Companions will use these links to follow the player, performing relevant movements like opening doors and mantling onto objects along the way.
-
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/EZPZP2ngfJ4?si=tBUMk8BQXRZ_nfns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-To avoid impeding the player’s movement, companions will move out of the way if the player bumps into them. This behavior uses **Environment Query System (EQS)** queries to find a reasonable nearby location for the NPC to go.
-
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/as1_ba3wwaM?si=eLCEgWn5NF-Bqw4T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-## Enemy AI
-
-Enemy logic is implemented in a **Behavior Tree**.
-
-Enemies not engaged in combat can be posted at a particular location or walk along a patrol route.
-
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/neZsZaLwJV4?si=bv-NkS6qhiBp4xEd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-Through an **AI Perception Component**, enemies can detect when the player is nearby. When the player first enters an enemy’s sight line, the enemy turns toward the player and plays an audio bark to indicate that the player has been spotted. If other enemies are nearby, they will also be alerted to the player’s presence (this is accomplished through an **instance synced Blackboard key** that is shared across related enemies).
-
-Basic enemy combat behavior is implemented using **Environment Query System (EQS)** queries. Enemies attack the nearest player or companion while maintaining a minimum distance and preferring to attack from behind cover. Enemies will also switch between weapons depending on their distance from their target.
-
-<iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/R_Aed4SPZTA?si=Hvz8XZlvJLOVhs-J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## UI
 
