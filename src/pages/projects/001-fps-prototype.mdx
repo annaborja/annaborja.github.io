@@ -94,8 +94,6 @@ I used a variety of techniques inside an **Animation Blueprint** to implement sm
 
 I built a system that allows for triggering scripted events within a level in a data-driven way.
 
-<img alt="A screenshot of an Unreal Engine Data Table filled with scripted events" src="/images/projects/fps-prototype/scripting-data-table.png" />
-
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/7qFSqtya-90?si=qbDhqvzfr5bLSQfr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **NPC barks** can be triggered, which utilize Dialogue Waves to play audio (in this prototype, placeholder audio is used in lieu of recorded dialogue). Barks can trigger other barks, allowing NPCs to respond to each other.
@@ -148,7 +146,7 @@ Enemies not engaged in combat can be posted at a particular location or walk alo
 
 Through an AI Perception Component, enemies can detect when the player is nearby.
 
-When the player first enters an enemy’s sight line, the enemy turns toward the player and plays an audio bark to indicate that the player has been spotted. If other enemies are nearby, they will also be alerted to the player’s presence (this is accomplished through an **instance-synced Blackboard key** that is shared across related enemies).
+When the player first enters an enemy’s sight line, the enemy turns toward the player and plays an audio bark. If other enemies are nearby, they will also be alerted to the player’s presence (this is accomplished through an **instance-synced Blackboard key** that is shared across related enemies).
 
 Enemy combat behavior is implemented using **Environment Query System (EQS)** queries. Enemies attack the nearest player or companion while maintaining a minimum distance and preferring to attack from behind cover. Enemies will also switch between weapons depending on their distance from their target.
 
@@ -198,17 +196,17 @@ Shooting is implemented as a GAS **gameplay ability**. The ability code performs
 
 ### Spread
 
-To implement spread, a bullet’s trajectory is **randomized within a cone originating from the gun’s muzzle**. The cone’s diameter could be calculated using gameplay attributes and other factors such as whether the character is running or standing still.
+To implement **spread**, a bullet’s trajectory is randomized within a cone originating from the gun’s muzzle. The cone’s diameter could be calculated using gameplay attributes and factors like whether the character is running or standing still.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/oD37mNZH0mw?si=eJYRh3zE43hgbZ0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Weapons like shotguns can be configured to fire multiple projectiles at once.
 
-<img alt="A screenshot of a video game shotgun with debugging markings illustrating the trajectory of the gun's projectiles" src="/images/projects/fps-prototype/spread-sg.png" width="600" />
+<img alt="A screenshot of a video game shotgun with debugging markings illustrating the trajectory of the gun's projectiles" src="/images/projects/fps-prototype/spread-sg.png" width="800" />
 
 ### Recoil
 
-After firing a weapon, **viewkick** is temporarily added to the viewport to simulate recoil. The direction, severity, and rate of recovery (**centerspeed**) of the viewkick could be configured for each unique weapon, allowing for a variety of differentiated weapon designs.
+After firing a weapon, **viewkick** is temporarily added to the viewport to simulate recoil. The direction, severity, and rate of recovery (**centerspeed**) of the viewkick could be configured for each unique weapon, allowing for a variety of designs.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/JnvtgSWvjII?si=Kv2tbgPqbJy14TB-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -220,12 +218,20 @@ The HUD displays key pieces of information related to the player’s vital stats
 
 Thanks to Unreal Engine’s **Common UI** plugin, the game’s UI can dynamically display gamepad and mouse/keyboard icons depending on what type of controller the player is using.
 
-[PICS TODO]
+<div class="flexbox-vertical" style="gap: var(--spacing-6); margin-block-end: var(--spacing-6);">
+  <div class="flexbox-horizontal flexbox-horizontal-blocks">
+    <img alt="" src="/images/projects/fps-prototype/icon-mkb-1.png" width="240" />
+    <img alt="" src="/images/projects/fps-prototype/icon-gamepad-1.png" width="240" />
+  </div>
+
+  <div class="flexbox-horizontal flexbox-horizontal-blocks">
+    <img alt="" src="/images/projects/fps-prototype/icon-mkb-2.png" width="240" />
+    <img alt="" src="/images/projects/fps-prototype/icon-gamepad-2.png" width="240" />
+  </div>
+</div>
 
 The game’s main menu supports three levels of tabbing. It utilizes Common UI widgets like tab lists, carousels, and activatable widget switchers.
 
 <iframe class="yt-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/0AAMr3gCx-c?si=4J8jjcwi1ivpOxQw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 The HUD can display temporary UI components like notifications and info displays. These components use C++ timers and queues to display information at the right time.
-
-[PICS TODO]
