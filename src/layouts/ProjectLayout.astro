@@ -20,19 +20,18 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
       <h1>{frontmatter.title}</h1>
 
       {
-        !!frontmatter.posted_on ||
-          (!!frontmatter.year && (
-            <div class="subtitle">
-              {!!frontmatter.posted_on && formatBlogPostDate(frontmatter)}
+        (!!frontmatter.posted_on || !!frontmatter.year) && (
+          <div class="subtitle">
+            {!!frontmatter.posted_on && formatBlogPostDate(frontmatter)}
 
-              {!!frontmatter.year && (
-                <>
-                  {frontmatter.year}{" "}
-                  {!!frontmatter.blurb && <>• {frontmatter.blurb}</>}
-                </>
-              )}
-            </div>
-          ))
+            {!!frontmatter.year && (
+              <>
+                {frontmatter.year}{" "}
+                {!!frontmatter.blurb && <>• {frontmatter.blurb}</>}
+              </>
+            )}
+          </div>
+        )
       }
 
       <slot />
