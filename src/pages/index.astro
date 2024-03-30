@@ -23,17 +23,10 @@ const projectLinkDimension = "var(--sizing-12)";
       </p>
 
       <p>
-        While I’ve had rewarding experiences in the tech industry, I’m
-        passionate about creative pursuits, and I’m inspired by how games can
-        bridge art forms—from writing and music to art, cinematography, and
-        sound design—and tie them together through engaging mechanics and
-        gameplay loops.
-      </p>
-
-      <p>
-        My favorite types of games tend to be action-adventure games and
-        shooters with strong writing, meaningful player choices, and a cinematic
-        flair.
+        I aim to work with a diverse and passionate team to create excellent
+        games that resonate with players. My favorite types of games tend to be
+        action-adventure games and shooters with strong writing, meaningful
+        player choices, and a cinematic flair.
       </p>
 
       <p class="social-links">
@@ -48,21 +41,22 @@ const projectLinkDimension = "var(--sizing-12)";
     <div class="content-container-inner flexbox-vertical">
       <h1 class="heading">Skills</h1>
 
-      <div class="skills-list">
+      <div class="skills-container">
         <div>
           <p class="skills-list-category">Software</p>
 
-          <ul class="skills-sublist flexbox-vertical">
+          <ul class="skills-list flexbox-vertical">
             <li>
               Unreal Engine 5
-              <ul>
-                <li>Blueprint</li>
-                <li>C++</li>
+              <ul class="skills-sublist flexbox-vertical">
+                <li>Blueprint / C++</li>
+                <li>Gameplay Ability System (GAS)</li>
+                <li>Common UI</li>
               </ul>
             </li>
             <li>
               Maya
-              <ul>
+              <ul class="skills-sublist flexbox-vertical">
                 <li>Hard-surface modeling</li>
                 <li>UV unwrapping</li>
               </ul>
@@ -73,7 +67,7 @@ const projectLinkDimension = "var(--sizing-12)";
         <div>
           <p class="skills-list-category">Programming Languages</p>
 
-          <ul class="skills-sublist flexbox-vertical">
+          <ul class="skills-list flexbox-vertical">
             <li>C++</li>
             <li>JavaScript</li>
           </ul>
@@ -112,12 +106,12 @@ const projectLinkDimension = "var(--sizing-12)";
     </div>
 
     <style define:vars={{ projectLinkDimension }}>
-      .about-section {
-        gap: var(--spacing-7);
-      }
-
       .content-container-inner {
         gap: var(--spacing-6);
+      }
+
+      .about-section {
+        gap: var(--spacing-5);
       }
 
       .content-container-outer {
@@ -127,6 +121,7 @@ const projectLinkDimension = "var(--sizing-12)";
       }
 
       .heading {
+        font-size: var(--font-size-6);
         text-align: center;
       }
 
@@ -200,7 +195,7 @@ const projectLinkDimension = "var(--sizing-12)";
         max-inline-size: var(--sizing-17);
       }
 
-      .skills-list {
+      .skills-container {
         align-items: flex-start;
         display: flex;
         flex-wrap: wrap;
@@ -212,10 +207,16 @@ const projectLinkDimension = "var(--sizing-12)";
         font-size: var(--font-size-3);
         font-weight: var(--font-weight-2);
         margin-block-end: var(--spacing-1);
+        text-align: center;
+      }
+
+      .skills-list {
+        gap: var(--spacing-1);
       }
 
       .skills-sublist {
         gap: var(--spacing-1);
+        margin-block-start: var(--spacing-1);
       }
 
       .social-links {
@@ -229,6 +230,10 @@ const projectLinkDimension = "var(--sizing-12)";
       @media (min-width: 768px) {
         .content-container-inner {
           max-inline-size: var(--sizing-16);
+        }
+
+        .skills-list-category {
+          text-align: start;
         }
       }
     </style>
