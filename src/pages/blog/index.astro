@@ -6,17 +6,20 @@ import {
 } from "../../helpers/blogHelpers";
 import AppLayout from "../../layouts/AppLayout.astro";
 
-const allPosts = (await Astro.glob<BlogPostFrontmatter>("./*.md")).filter(
+const allPosts = (await Astro.glob<BlogPostFrontmatter>("./*.mdx")).filter(
   (post) => !post.frontmatter.draft
 );
-const analysisPosts = allPosts.filter((post) =>
-  post.frontmatter.tags?.includes("analysis")
+
+allPosts.sort((a, b) => a.frontmatter.title.localeCompare(b.frontmatter.title));
+
+const gameDesignPosts = allPosts.filter((post) =>
+  post.frontmatter.tags?.includes("game-design")
 );
-const notesPosts = allPosts.filter((post) =>
-  post.frontmatter.tags?.includes("notes")
+const gameProgrammingPosts = allPosts.filter((post) =>
+  post.frontmatter.tags?.includes("game-programming")
 );
-const postMortemPosts = allPosts.filter((post) =>
-  post.frontmatter.tags?.includes("post-mortem")
+const mediaAnalysisPosts = allPosts.filter((post) =>
+  post.frontmatter.tags?.includes("media-analysis")
 );
 
 const title = "Blog";
@@ -32,60 +35,54 @@ const title = "Blog";
     class="content-container flexbox-vertical with-responsive-padding-inline"
   >
     {
-      postMortemPosts.length > 0 && (
+      gameDesignPosts.length > 0 && (
         <div>
-          <h1 class="heading">Post-Mortems</h1>
+          <h1 class="section-heading">Game Design</h1>
 
           <ul class="list-without-bullets posts-list">
-            {postMortemPosts
-              .sort((a, b) => b.file.localeCompare(a.file))
-              .map((post) => (
-                <li>
-                  <a class="text-link" href={post.url}>
-                    {getBlogPostFullTitle(post.frontmatter)}
-                  </a>
-                </li>
-              ))}
+            {gameDesignPosts.map((post) => (
+              <li>
+                <a class="text-link" href={post.url}>
+                  {getBlogPostFullTitle(post.frontmatter)}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       )
     }
 
     {
-      analysisPosts.length > 0 && (
+      gameProgrammingPosts.length > 0 && (
         <div>
-          <h1 class="heading">Analyses</h1>
+          <h1 class="section-heading">Game Programming</h1>
 
           <ul class="list-without-bullets posts-list">
-            {analysisPosts
-              .sort((a, b) => b.file.localeCompare(a.file))
-              .map((post) => (
-                <li>
-                  <a class="text-link" href={post.url}>
-                    {getBlogPostFullTitle(post.frontmatter)}
-                  </a>
-                </li>
-              ))}
+            {gameProgrammingPosts.map((post) => (
+              <li>
+                <a class="text-link" href={post.url}>
+                  {getBlogPostFullTitle(post.frontmatter)}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       )
     }
 
     {
-      notesPosts.length > 0 && (
+      mediaAnalysisPosts.length > 0 && (
         <div>
-          <h1 class="heading">Notes</h1>
+          <h1 class="section-heading">Media Analysis</h1>
 
           <ul class="list-without-bullets posts-list">
-            {notesPosts
-              .sort((a, b) => b.file.localeCompare(a.file))
-              .map((post) => (
-                <li>
-                  <a class="text-link" href={post.url}>
-                    {getBlogPostFullTitle(post.frontmatter)}
-                  </a>
-                </li>
-              ))}
+            {mediaAnalysisPosts.map((post) => (
+              <li>
+                <a class="text-link" href={post.url}>
+                  {getBlogPostFullTitle(post.frontmatter)}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       )
@@ -104,9 +101,16 @@ const title = "Blog";
     font-size: var(--font-size-4);
   }
 
-  .heading {
+  .section-heading {
     font-size: var(--font-size-5);
     margin-block-end: var(--spacing-3);
+  }
+
+  .section-description {
+    font-size: var(--font-size-1);
+    margin: 0 auto var(--spacing-5) auto;
+    max-inline-size: var(--sizing-14);
+    text-align: start;
   }
 
   .posts-list {

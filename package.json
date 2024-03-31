@@ -14,9 +14,11 @@
     "@astrojs/mdx": "^0.19.7",
     "astro": "^2.6.3",
     "autoprefixer": "^10.4.13",
-    "dayjs": "^1.11.8"
+    "dayjs": "^1.11.8",
+    "katex": "^0.16.10"
   },
   "devDependencies": {
+    "@types/katex": "^0.16.7",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "eslint": "^8.30.0",

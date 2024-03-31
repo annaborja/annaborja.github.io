@@ -3,9 +3,18 @@ import HeroBanner from "../components/HeroBanner.astro";
 import type { ProjectFrontmatter } from "../helpers/projectHelpers";
 import AppLayout from "../layouts/AppLayout.astro";
 
-const projects = (await Astro.glob<ProjectFrontmatter>("./projects/*.mdx"))
-  .filter((project) => !project.frontmatter.draft)
-  .sort((a, b) => b.file.localeCompare(a.file));
+const allProjects = (
+  await Astro.glob<ProjectFrontmatter>("./projects/*.mdx")
+).filter((project) => !project.frontmatter.draft);
+
+allProjects.sort((a, b) => b.file.localeCompare(a.file));
+
+const gameProjects = allProjects.filter((post) =>
+  post.frontmatter.tags?.includes("game")
+);
+const miscProjects = allProjects.filter(
+  (post) => !post.frontmatter.tags?.includes("game")
+);
 
 const projectLinkDimension = "var(--sizing-12)";
 ---
@@ -75,13 +84,13 @@ const projectLinkDimension = "var(--sizing-12)";
       </div>
     </div>
 
-    <div class="content-container-inner flexbox-vertical projects-section">
-      <h1 class="heading">Projects</h1>
+    {
+      gameProjects.length > 0 && (
+        <div class="content-container-inner flexbox-vertical projects-section">
+          <h1 class="heading">Game Projects</h1>
 
-      {
-        projects.length > 0 && (
           <ul class="list-without-bullets projects-list">
-            {projects.map((project) => (
+            {gameProjects.map((project) => (
               <li class="project-link-container">
                 <a class="flexbox-vertical project-link" href={project.url}>
                   <span class="project-link-title">
@@ -101,9 +110,39 @@ const projectLinkDimension = "var(--sizing-12)";
               </li>
             ))}
           </ul>
-        )
-      }
-    </div>
+        </div>
+      )
+    }
+
+    {
+      miscProjects.length > 0 && (
+        <div class="content-container-inner flexbox-vertical projects-section">
+          <h1 class="heading">Other Projects</h1>
+
+          <ul class="list-without-bullets projects-list">
+            {miscProjects.map((project) => (
+              <li class="project-link-container">
+                <a class="flexbox-vertical project-link" href={project.url}>
+                  <span class="project-link-title">
+                    {project.frontmatter.title}
+                  </span>
+
+                  <span class="project-link-blurb">
+                    {project.frontmatter.blurb}
+                  </span>
+                </a>
+
+                <img
+                  alt=""
+                  class="project-image"
+                  src={project.frontmatter.image}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
 
     <style define:vars={{ projectLinkDimension }}>
       .content-container-inner {

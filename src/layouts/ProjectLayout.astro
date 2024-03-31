@@ -4,6 +4,8 @@ import type { ProjectFrontmatter } from "../helpers/projectHelpers";
 import HeroBanner from "../components/HeroBanner.astro";
 import { formatBlogPostDate } from "../helpers/blogHelpers";
 
+import "katex/dist/katex.css";
+
 const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 ---
 
