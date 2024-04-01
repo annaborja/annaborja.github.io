@@ -1,0 +1,58 @@
+---
+layout: ../../layouts/ProjectLayout.astro
+posted_on: 2024-03-30
+tags: ["game-programming"]
+title: "Making a First-Person Shooter"
+---
+
+A detailed overview of the aspects that need to be considered when implementing an FPS game.
+
+## The Character Mesh
+
+### Traditional First-Person Versus True First-Person
+
+A fundamental question is: Do you want the player to be able to see their character’s body when they look down? If not, you can essentially attach an arms-only skeletal mesh to the first-person camera and call it a day.
+If you want the player to be able to see their body, then there are two main strategies:
+
+  - Use a first-person (arms-only) mesh and combine it on the character
+    with a separate third-person (full-body) mesh that has the upper-body bones hidden.
+    - This strategy offers you fine-grained control over the placement and animations of each mesh,
+      allowing you to tailor them specifically for the first-person view.
+  - ”True first-person”: Use a single skeletal mesh for the upper and lower body
+    but hide various bones (like the head and neck) to prevent the camera from clipping into the mesh
+    (since the first-person camera will be positioned at the mesh’s head).
+    - This strategy can offer a great sense of realism and efficiency
+      in that first-person and third-person views can share the same mesh and animations.
+      However, this same efficiency leads to less control in terms of how you tailor your animations for first-person view.
+    - Your camera is also at the mercy of your animations if it is attached to your skeletal mesh’s head bone,
+      and you’ll need to be careful to avoid causing motion sickness for your players.
+
+Allowing the player to see their own body can heighten the player’s sense of immersion but at the cost of adding complexity to the game’s implementation:
+  - You need to position the body mesh in a way that looks natural from any angle the player may be looking from.
+  - You need to prevent the camera from ever clipping into the body mesh.
+  - Animations for the lower body need to look natural, taking into consideration
+    all the different angles the player could be looking from and all the different movements
+    they could be executing at any one time (idling, running, strafing, jumping, landing, attacking, etc.).
+  - Lower-body animations need to stay in sync with those of the upper body.
+  - The lower-body mesh must not excessively obstruct the player’s view
+    (especially if the player is ever expected to be shooting downward from the air).
+
+### Multiplayer Considerations
+
+If your player character utilizes a first-person (arms-only) mesh, then you’ll need to display a separate third-person mesh
+to other players in a multiplayer scenario. The first-person mesh should be visible only to the player,
+while the third-person mesh should be visible only to other players.
+
+## The Camera
+
+### Camera Bob
+
+### Camera Movement
+
+### Field of View (FOV)
+
+## The Weapon Mesh
+
+### Hand IK
+
+### Weapon Sway

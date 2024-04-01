@@ -82,6 +82,10 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
     margin-block-start: var(--spacing-7);
   }
 
+  :global(.project-post h2) + :global(h3) {
+    margin-block-start: var(--spacing-5);
+  }
+
   :global(.project-post h4) {
     margin-block-end: var(--spacing-3);
     margin-block-start: var(--spacing-6);
@@ -93,6 +97,10 @@ const frontmatter = Astro.props.frontmatter as ProjectFrontmatter;
 
   :global(.project-post ul) {
     margin-block-end: var(--spacing-6);
+  }
+
+  :global(.project-post li ul) {
+    margin-block-end: var(--spacing-2);
   }
 
   :global(.project-post .note) {
